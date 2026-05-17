@@ -1,0 +1,21 @@
+<#f0f000>:Normal Attacks:</>
+Dexter Stand Light Punch 						^X
+Dexter Stand Medium Punch			^Y
+Dexter Standing Strong Punch						^Z
+
+<#f0f000>:Block:</>
+Dexter Guard					_DF_F_+^X
+
+<#f0f000>:Throws:</>
+Dexter Throw						_F_+^Y_^Z
+
+<#f0f000>:Special Moves:</>
+Ray_Gun        _D_F_+^X
+Fire Gun        _D_F_+^Y
+Laser_Pen      _D_F_+^Z
+
+<#f0f000>:Super Moves:</>
+Mortal Combat <#bebebe>(3000)</>		_D_DF_F_+^X+^Y
+Robo Dexter 3000 <#bebebe>(3001)</>		_D_DF_F_+^Y+^Z
+Mom-Droid <#bebebe>(3200)</>	         _D_D+^X_+^X_+^Y+^Z
+Dexter Robo Dodgeball <#bebebe>(3005)</>		_D_DB_B_+^X+^Y
