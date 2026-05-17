@@ -1,0 +1,56 @@
+
+[Info]
+name = "Kids Next Door - Nigel Uno"        ;Name of character
+displayname = "Numbuh 1" ;Name of character to display
+;versiondate =    ;Version date of character
+mugenversion = 1.0  ;Version of M.U.G.E.N character works on
+author = "MyYouTube Rocks"      ;Character author name
+pal.defaults = 1,2  ;Default palettes in order of preference
+
+; Files for the player
+[Files]
+cmd     = player.cmd   ;Command set
+cns     = player.cns   ;Constants
+st      = player.cns   ;States
+stcommon = common1.cns ;Common states
+sprite  = player.sff   ;Sprite
+anim    = player.air   ;Animation
+sound  = player.snd   ;Sound
+pal1   = Pal1.act   ;Palettes (can have up to 12)
+pal2   = Pal2.act
+pal3   = Pal3.act
+pal4   = Pal4.act
+pal5   = Pal5.act
+pal6   = Pal6.act
+;pal7   =
+;pal8   =
+;pal9   =
+;pal10  =
+;pal11  =
+;pal12  =
+
+;[Unlock]
+;condition = "Unlocked by Default" ;Set unlock condition info text
+;storyboard = ;Set unlock screen storyboard path (Like arcade intro and ending)
+
+[Portraits]
+;face.portrait.spr = 9000,0 ;Set sprite group and index from sff file loaded above to show face portrait in character select (WIP)
+;face.portrait.scale = 1.0,1.0 ;Set scale (WIP)
+
+;select.portrait.spr = 9000,1 ;WIP ;Set sprite group and index from sff file loaded above to show big portrait in character select (WIP)
+;select.portrait.scale = 1.0,1.0 ;WIP
+
+;order.portrait.spr = 9000,4 ;Set sprite group and index from sff file loaded above to show custom character portrait in order select (WIP)
+;order.portrait.scale = 1.0,1.0 ;WIP
+
+;vs.portrait.spr = 9000,5 ;Set sprite group and index from sff file loaded above to show custom character portrait in versus screen (WIP)
+;vs.portrait.scale = 1.0,1.0 ;WIP
+
+;win.portrait.spr = 9000,2 ;Set sprite group and index from sff file loaded above to show custom winner portrait in victory screen (WIP)
+;win.portrait.scale = 1.0,1.0 ;WIP
+
+;lose.portrait.spr = 9000,3 ;Set sprite group and index from sff file loaded above to show custom loser portrait in victory screen (WIP)
+;lose.portrait.scale = 1.0,1.0 ;WIP
+
+;result.portrait.spr = 9000,6 ;Set sprite group and index from sff file loaded above to show custom character portrait in results screen (WIP)
+result.portrait.scale = 0.25,0.25
