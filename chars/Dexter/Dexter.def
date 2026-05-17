@@ -18,6 +18,7 @@ sprite  =Dexter.sff
 anim    =Dexter.air
 sound   =Dexter.snd
 movelist = movelist.dat     ;Ikemen feature: Movelist
+
 pal1=Act\Dexter.act
 pal2=Act\Dexter2.act
 pal3=Act\Dexter3.act
