@@ -1,0 +1,49 @@
+; Definition file for Dexter
+; Contains all the filenames needed for the character
+[Info]
+name ="Dexter McPhearson"
+displayname ="Dexter"
+versiondate =06,24,2012    
+mugenversion =1.0  
+author ="Felixmario2011"
+pal.defaults=1,2,3,4,5,6,7
+
+; Files for the player
+[Files]
+cmd     =Dexter.cmd
+cns     =cns\data.cns
+st      =cns\Dexter.cns
+stcommon =common1.cns
+sprite  =Dexter.sff
+anim    =Dexter.air
+sound   =Dexter.snd
+pal1=Act\Dexter.act
+pal2=Act\Dexter2.act
+pal3=Act\Dexter3.act
+pal4=Act\Dexter5.act
+pal5=Act\Dexter6.act
+pal6=Act\Dexter7.act
+pal7=Act\Dexter8.act
+pal8=Act\Dexter9.act
+pal8=Act\Rude.act
+pal10=Act\Test.act
+st1=cns\Attack.cns
+st2=cns\Super.cns
+st3=cns\Hypers.cns
+[Arcade]
+intro.storyboard = 
+ending.storyboard = 
+
+[Palette Keymap]
+x = 1 ;Press button X to select palette 1, etc.
+y = 2
+z = 3
+a = 4
+b = 5
+c = 6
+x2 = 7 ;Hold Start and press button X for palette 7, etc.
+y2 = 8
+z2 = 9
+a2 = 10
+b2 = 11
+c2 = 12
