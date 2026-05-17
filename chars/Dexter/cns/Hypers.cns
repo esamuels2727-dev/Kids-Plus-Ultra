@@ -1,0 +1,7559 @@
+;---------------------------------------------------------------------------
+; Dexo-Transformer
+; Coding Based on Gumball Watterson by Cattigan619, MGSSJ2 edit, Kamek by Neo-Kamek
+; And Captain America by Acey.
+; Sound borrowed from Sentinel by XsLaught
+[Statedef 3000]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+velset = 0,0
+anim = 3000
+ctrl = 0
+sprpriority = 2
+
+[State 3000,Flash For Dexter Hyper]
+type = EnvColor
+trigger1 = AnimElem = 4
+value = 240,240,240
+time = 8
+ignorehitpause = 1
+persistent = 1
+
+[State 3000,Hyper Background]
+type = Explod
+trigger1 = AnimElem = 4
+id = 1081
+anim = 1081
+pos = 0,0
+postype = back
+sprpriority = -9
+removeongethit = 1
+removetime = 52
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .5,.5
+
+[State 3000,Letter D]
+type = explod
+trigger1 = AnimElem = 4
+anim = 1082
+ID = 1082
+postype = Left
+sprpriority = -3
+supermovetime = -1
+pausemovetime = -1
+removetime = 40
+Pausemovetime = -1
+supermovetime = -1
+scale = .5,.5
+pos= 160,120
+
+[State 3000,Hyper PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 4
+value = S7500,1
+
+[State 3000,BGPalFX]
+type = BGPalFX
+trigger1 = time = 0
+time = 30
+add = 256,256,256
+mul = 0,0,0
+color = 256
+ignorehitpause = 1
+
+[State 3000,Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -3
+pausemovetime = -1
+supermovetime = -1
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 3000,Pause]
+type = Pause
+trigger1 = AnimElem = 1
+time = 8
+movetime = 8
+
+[State 3000,SuperPause]
+type = SuperPause
+trigger1 = AnimElem = 4
+pos = -10,-30
+anim = 100
+sound = s7500, 0
+poweradd = -2000
+
+[State 3000,NotHitBy]
+type = NotHitBy
+trigger1 = AnimElem = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 8
+
+[State 3000,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 5
+value = S1000,15
+
+[State 3000,VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = 20
+y = 0
+
+[State 3000,HitDef]
+type = HitDef
+Trigger1 = Time = 0
+attr = S, HP
+hitflag = MAF
+guardflag = MA
+priority = 1, Miss
+getpower = 0,0
+givepower = 0,0
+pausetime = 0,0
+sparkno = s9999
+guard.sparkno = s9999
+damage = 0,0
+guardsound = s1,2
+pausetime = 0,0
+p1stateno = 3001
+p2stateno = 3010
+p2facing = 1
+numhits = 0
+guard.dist = 0
+ground.velocity = 0,0
+ground.hittime = 0
+ground.type = Low
+air.type = Low
+air.hittime = 0
+air.velocity = 0,0
+fall = 0
+fall.recover = 1
+fall = 1
+id = 3000
+
+[State 3000,MoveGuarded]
+type = ChangeState
+trigger1 = MoveGuarded
+value = 3005
+
+[State 3000,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;--------------------------------------------------------------------------
+; Turn to Robo-Dexo
+[Statedef 3001]
+type    = S
+movetype= A
+physics = S
+velset = 0,0
+anim = 3001
+ctrl = 0
+
+[State 3001,Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = S3000,4
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3001,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+
+[State 3001,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+flag3 = timerfreeze
+
+[State 3001,SprPriority]
+type = SprPriority
+trigger1 = AnimElem = 1
+value = 102
+
+[State 3001,PalFX]
+type = PalFX
+trigger1 = time = [0,19]
+time = 8
+add = time*32,time*32,time*32
+mul = 256,256,256
+
+[State 3001,PalFX]
+type = PalFX
+trigger1 = time = [19,25]
+time = 1
+add = 256-(time-16)*16,256-(time-16)*16,256-(time-16)*16
+mul = 256,256,256
+
+[State 3001,AngleDraw]
+type = AngleDraw
+trigger1 = time = [0,19]
+scale = .9+(time-8)*.10,.6+(time-8)*.10
+
+[State 3001,Background]
+type = Explod
+trigger1 = AnimElem = 1
+id = 700
+anim = 751
+pos = 0,0
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+
+[State 3001,Flashlight]
+type = EnvColor
+trigger1 = time = 0
+value = 240,240,240
+time = 10
+persistent = 1
+
+[State 3001,ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 3001,PosSet]
+type = PosSet
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 3001,First move]
+type = VelSet
+trigger1 = animelem = 1
+x = -10
+y = -6
+
+[State 3001,First move with little move]
+type = VelSet
+trigger1 = time = 5
+x = -7
+
+[State 3001,Second move]
+type = VelSet
+trigger1 = animelem = 2
+x = -5
+y = 0
+
+[State 3001,Target VelAdd First move]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 2
+x = -10
+y = -3
+ID = 3000
+
+[State 3001,Target VelAdd First move]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 10
+x = -5
+y = -2
+ID = 3000
+
+[State 3001,Target VelAdd First move]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 20
+x = -10
+y = -1
+ID = 3000
+
+[State 3001,Target VelAdd First move]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 95
+y = 1
+ID = 3000
+
+[State 3001,Target VelAdd First move]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 115
+y = 0
+ID = 3000
+
+[State 3001,Land]
+type = EnvShake
+trigger1 = AnimElem = 3
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3001,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 1
+value = S1000,16
+
+[State 3001,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S1000,22
+
+[State 3001,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 3
+value = S3000,6
+
+[State 3001,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 5
+value = S1000,15
+
+[State 3001,Dust]
+type = Explod
+trigger1 = AnimElem = 3
+anim = 7502
+pos = -20,135
+sprpriority = 103
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3001,It's Dexo Combo Time!]
+type = changestate
+trigger1 = AnimTime = 0
+value = 3002
+ctrl = 0
+;--------------------------------------------------------------------------
+; It's Dexo Combo Time!
+[Statedef 3002]
+type    = S
+movetype= A
+physics = S
+velset = 0,0
+anim = 3002
+ctrl = 0
+
+[State 3002,Voice]
+type = PlaySnd
+trigger1 =  animelem = 2
+value = S3100,3
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3002,Voice]
+type = PlaySnd
+trigger1 =  animelem = 11
+value = S200,2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3002,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+
+[State 3002,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+flag3 = timerfreeze
+
+[State 3002,SprPriority]
+type = SprPriority
+trigger1 = AnimElem = 1
+value = 102
+
+[State 3002,ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 3002,TargetState]
+type = TargetState
+triggerall = numtarget(3000)
+trigger1 = time = 1
+value = 3006
+ID = 3000
+
+[State 3002,TargetState]
+type = TargetState
+triggerall = numtarget(3000)
+trigger1 = time = 100
+value = 3007
+ID = 3000
+
+[State 3002,VelSet 0]
+type = VelSet
+trigger1 = animelem = 1
+x = -4
+y = 0
+
+[State 3002,VelSet 1]
+type = VelSet
+trigger1 = animelem = 2
+x = -10
+y = 0
+
+[State 3002,VelSet 2]
+type = VelSet
+trigger1 = animelem = 3
+x = -10
+y = 0
+
+[State 3002,VelSet 3]
+type = VelSet
+trigger1 = animelem = 4
+x = 10
+y = 2
+
+[State 3002,VelSet 4]
+type = VelSet
+trigger1 = animelem = 5
+x = 5
+y = 1
+
+[State 3002,VelSet 5]
+type = VelSet
+trigger1 = animelem = 10
+x = 25
+y = 0
+
+[State 3002,VelSet 6]
+type = VelSet
+trigger1 = animelem = 11
+x = -15
+y = 4
+
+[State 3002,VelSet 7]
+type = VelSet
+trigger1 = animelem = 17
+x = 0
+y = 0
+
+[State 3002, Target VelAdd 0]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 1
+x = 3
+y = 0
+ID = 3000
+
+[State 3002, Target VelAdd 1]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 7
+x = 3
+y = 0
+ID = 3000
+
+[State 3002, Target VelAdd 2]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 15
+x = 10
+ID = 3000
+
+[State 3002, Target VelAdd 3]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 20
+x = -5
+ID = 3000
+
+[State 3002, Target VelAdd 4]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = 70
+x = 0
+y = 2
+ID = 3000
+
+[State 3002, Target VelAdd 5]
+type = TargetVelSet
+triggerall = numtarget(3000)
+trigger1 = time = [100,150]
+x = -5
+y = 0
+ID = 3000
+
+[State 3002, Punch Text]
+type = Helper
+trigger1 = AnimElem = 3
+name = "Punch"
+stateno = 706
+pos = 250,0
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3002,Hit by Punch Explod]
+type = Explod
+trigger1 = AnimElem = 3
+anim = 7772
+pos = 250,-30
+postype = p1
+facing = 1
+supermovetime = -1
+pausemovetime = -1
+scale = 1,1
+sprpriority = 102
+shadow = 0,0,0
+ownpal = 1
+removeongethit =1
+
+[State 3002, Kick Text]
+type = Helper
+trigger1 = AnimElem = 10
+name = "Kick"
+stateno = 707
+pos = 240,30
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3002,Hit by Kick Explod]
+type = Explod
+trigger1 = AnimElem = 10
+anim = 7772
+pos = 220,-20
+postype = p1
+facing = 1
+supermovetime = -1
+pausemovetime = -1
+scale = 1,1
+sprpriority = 102
+shadow = 0,0,0
+ownpal = 1
+removeongethit =1
+
+[State 3002,Dust]
+type = Explod
+trigger1 = AnimElem = 17
+anim = 7502
+pos = -20,0
+sprpriority = 103
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3002,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 10
+trigger3 = AnimElem = 17
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3002,HitAdd]
+type = HitAdd
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 10
+value = 1
+
+[State 3002,TargetLifeAdd]
+type = TargetLifeAdd
+triggerall = numtarget(3000)
+trigger1 = AnimElem = 3
+trigger2 = AnimElem = 10
+value = -100
+ID = 3000
+kill = 0
+absolute = 0
+
+[State 3002,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+trigger2 = animelem = 7
+value = S3000,5
+
+[State 3002,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 4
+value = S3000,14
+
+[State 3002,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 7
+value = S1000,26
+
+[State 3002,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 3
+trigger2 = animelem = 10
+value = S5,18
+
+[State 3002,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S1000,9
+
+[State 3002,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 4
+trigger2 = animelem = 12
+value = S3000,8
+
+[State 3002,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 17
+value = S1000,20
+
+[State 3002,I have a present for you]
+type = changestate
+trigger1 = AnimTime = 0
+value = 3003
+ctrl = 0
+;--------------------------------------------------------------------------
+; I have a present for you
+[Statedef 3003]
+type    = S
+movetype= A
+physics = S
+velset = 0,0
+anim = 3003
+ctrl = 0
+
+[State 3003,Voice]
+type = PlaySnd
+trigger1 =  animelem = 3
+value = S3200,0
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3003,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = nobardisplay
+
+[State 3003,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noBG
+flag2 = noFG
+flag3 = timerfreeze
+
+[State 3003,SprPriority]
+type = SprPriority
+trigger1 = AnimElem = 1
+value = 102
+
+[State 3003,ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 3003,PosSet]
+type = PosSet
+trigger1 =  animelem = 1
+trigger1 = Facing = 1
+x = -60
+y = 40
+
+[State 3003,PosSet]
+type = PosSet
+trigger1 =  animelem = 1
+trigger1 = Facing = -1
+x = 60
+y = 40
+
+[State 3003,VelSet 0]
+type = VelSet
+trigger1 = time = [12,16]
+x = -5
+y = 10
+
+[State 3003,VelSet 1]
+type = VelSet
+trigger1 = time = 17
+x = 0
+y = 0
+
+[State 3003,VelSet 2]
+type = VelSet
+trigger1 = time = [48,50]
+x = -25
+y = 20
+
+[State 3003,PlaySnd]
+type = PlaySnd
+trigger1 = time = 46
+value = S3000,11+random%3
+
+[State 3003,PlaySnd]
+type = PlaySnd
+trigger1 = time = 47
+value = S3000,9
+channel = 4
+
+[State 3003,Explosion]
+type = Explod
+trigger1 = time = 46
+anim = 3045
+pos = 140,-230
+postype = p1
+sprpriority = 103
+removeongethit = 1
+removetime = 55
+bindtime = -1
+supermove = 1
+ownpal = 1
+removeongethit = 1
+
+[State 3003,Dodgeball]
+type = Helper
+trigger1 = time = 46
+helpertype = normal
+ignorehitpause = 1
+name = "Dodgeball"
+id = 3001
+facing = 1
+pos = 140,-230
+postype = P1
+stateno = 3004
+keyctrl = 0
+ownpal = 1
+size.xscale = 1
+size.yscale = 1
+
+[State 3003,PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 3
+value = S1000,22
+
+[State 3003,TargetState]
+type = TargetState
+triggerall = numtarget(3000)
+trigger1 = time = 160
+value = 3008
+ID = 3000
+
+[State 3003,TargetLifeAdd]
+type = TargetLifeAdd
+triggerall = numtarget(3000)
+trigger1 = time = 210
+value = -100
+ID = 3000
+kill = 1
+absolute = 0
+
+[State 3003,EnvShake]
+type = EnvShake
+trigger1 = time = 210
+time = 30
+freq = 80
+ampl = -35
+phase = 90
+
+[State 3003,HitAdd]
+type = HitAdd
+trigger1 = time = 210
+value = 1
+
+[State 3003,PlaySnd]
+type = PlaySnd
+trigger1 = time = 210
+value = S3000,15
+channel = 4
+
+[State 3003,Return from Dexo-Transformer]
+type = changestate
+trigger1 = time = 210
+value = 3009
+ctrl = 0
+;--------------------------------------------------------------------------
+; Return from Dexo-Transformer
+[Statedef 3009]
+type    = A
+physics = N
+velset = 0,0
+anim = 3005
+ctrl = 0
+
+[State 3009,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 3009,SprPriority]
+type = SprPriority
+trigger1 = AnimElem = 1
+value = 1
+
+[State 3009,RemoveExplod]
+type = RemoveExplod
+trigger1 = 1
+id = 700
+ignorehitpause = 1
+
+[State 3009,EnvColor]
+type = EnvColor
+trigger1 = time = 0
+value = 240,240,240
+time = 5
+persistent = 1
+
+[State 3009,AllPalFX]
+type = AllPalFX
+trigger1 = time = 4
+time = 20
+add = 255,255,255
+mul = 256,256,256
+sinadd = -255,-255,-255,80
+invertall = 0
+color = 256
+
+[State 3009,Coordinate]
+type = PosSet
+trigger1 = time = 0
+trigger1 = Facing = 1
+x = -30
+y = -700
+
+[State 3009,Coordinate]
+type = PosSet
+trigger1 = time = 0
+trigger1 = Facing = -1
+x = 30
+y = -700
+
+[State 3009,TargetBind]
+type = TargetBind
+trigger1 = time = 0
+pos = 60,-200
+
+[State 3009,TargetState]
+type = TargetState
+triggerall = numtarget(3000)
+trigger1 = Time = 0
+Value = 4008
+ID = 3000
+
+[State 3009,Explosion Explod]
+type = explod
+trigger1 = time = 0
+anim = 3045
+postype = p1
+sprpriority = 4
+pos = 0,70
+ownpal = 1
+removetime = 54
+scale = 2,4
+
+[State 3009,Gravity]
+type = VelAdd
+trigger1 = 1
+y = .44
+
+[State 3009,End]
+type = ChangeState
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 52
+ctrl = 0
+;---------------------------------------------------------------------------
+; HITA_FALL (knocked up, falling)
+[Statedef 4008]
+type    = A
+movetype= H
+physics = N
+
+[State 4008,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 4008,Screen]
+type = Screenbound
+trigger1 = 1
+movecamera = 0,0
+
+[State 4008,ChangeAnim] ;Change anim when done with transition
+type = ChangeAnim
+trigger1 = AnimTime = 0
+trigger1 = Anim = 5035
+trigger2 = Time = 0     ;If no transition anim
+trigger2 = Anim != 5035
+trigger2 = (Anim != [5051, 5059]) && (Anim != [5061, 5069])
+trigger2 = Anim != 5090 ;Not if hit off ground anim
+value = 5050
+
+[State 4008,ChangeAnim] ;Coming down anim
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, 1, -2)
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+[State 4008,Gravity]
+type = VelAdd
+trigger1 = 1
+y = .45
+
+[State 4008,FallDamage]
+type = LifeAdd
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= ifelse((anim = [5051,5059]) || (anim = [5061,5069]), 0, 25)
+value = -50
+
+[State 4008,GroundShake]
+type = EnvShake
+time = 50
+freq = 130
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= ifelse((anim = [5051,5059]) || (anim = [5061,5069]), 0, 25)
+
+[State 4008,SelfState]
+type = SelfState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= ifelse((anim = [5051,5059]) || (anim = [5061,5069]), 0, 25)
+value = 5100 ;HIT_BOUNCE
+;---------------------------------------------------------------------------------------------
+; Dodgeball
+[Statedef 3004]
+type    = S
+movetype= A
+physics = S
+juggle  = 1
+velset = 0,0
+anim = 3004
+ctrl = 0
+sprpriority = 104
+
+[State 3004,PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S3000,16
+
+[State 3004,AngleSet]
+type = AngleSet
+trigger1 = Time = 0
+value = 1
+
+[State 3004,AngleDraw]
+type = AngleDraw
+trigger1 = 1
+
+[State 3004,AngleMul]
+type = AngleAdd
+trigger1 = Time > 0
+value = -15
+
+[State 3004,VelSet 0]
+type = VelSet
+trigger1 = time = [0,10]
+x = -7
+y = 7
+
+[State 3004,VelSet 1]
+type = VelSet
+trigger1 = time = 10
+x = 0
+y = 0
+
+[State 3004,Destroy]
+type = DestroySelf
+trigger1 = time = 165
+;------------------
+; Fail Robo-Dexo
+[Statedef 3005]
+type    = A
+physics = N
+juggle  = 1
+anim = 3058
+sprpriority = 1
+velset = -5,-10
+
+[State 3005,Gravity]
+type = VelAdd
+trigger1 = 1
+y = .44
+
+[State 3005,End]
+type = ChangeState
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 52
+ctrl = 0
+;---------------------------------------------------------------------------
+; Dexo-Transformer (opponent hitshake)
+[Statedef 3010]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 3010,SprPriority]
+type = SprPriority
+trigger1 = time = 0
+value = 101
+
+[State 3010,ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 3010,PosSet]
+type = PosSet
+trigger1 = time = 0
+x = 0
+y = 0
+
+[State 3010,ChangeAnim2 A]
+type = ChangeAnim2
+trigger1 = !SelfAnimExist(5250)
+trigger1 = Time >= 0
+value = 3010
+
+[State 3010,ChangeAnim B]
+type = ChangeAnim
+trigger1 = SelfAnimExist(5250)
+trigger1 = Time >= 0
+value = 5250
+
+[State 3010,ChangeState]
+type = ChangeState
+trigger1 = HitShakeOver
+value = 3011
+;---------------------------------------------------------------------------
+; Dexo-Transformer (opponent spiraling up)
+[Statedef 3011]
+type = S
+movetype = H
+physics = S
+poweradd = 0
+ctrl = 0
+
+[State 3011,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 3011,PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 3011,ScreenBound]
+type = ScreenBound
+trigger1 =1
+value = 0
+movecamera = 0,0
+
+[State 3011,SelfState]
+type = SelfState
+trigger1 = time = 720
+value = 5050
+;---------------------------------------------------------------------------
+; Dexo-Transformer (Getting TWO Hit)
+[Statedef 3006]
+type = S
+movetype = H
+physics = S
+poweradd = 0
+ctrl = 0
+
+[State 3006,ChangeAnim2]
+type = ChangeAnim2
+Trigger1 = Time = 0
+value = 3006
+
+[State 3006,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 3006,PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 3006,ScreenBound]
+type = ScreenBound
+trigger1 =1
+value = 0
+movecamera = 0,0
+
+[State 3006,SelfState]
+type = SelfState
+trigger1 = time = 720
+value = 5050
+;---------------------------------------------------------------------------
+; Dexo-Transformer (Wire Damage)
+[Statedef 3007]
+type = S
+movetype = H
+physics = S
+poweradd = 0
+anim = 5012
+ctrl = 0
+
+[State 3007, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = 110
+
+[State 3007,Anim 5012]
+type = ChangeAnim2
+trigger1 = !time
+trigger1 = !selfanimexist(5900)
+value = 5012
+
+[State 3007,Wire damage Blowoff];Like kouya and Deoxgigas's character
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5400)
+value = 5400
+
+[State 3007,Wire damage for Websta's character];Like Platinum the Trinity, Linne and Hyde.
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5957)
+value = 5957
+
+[State 3007, Wire damage]
+type = ChangeAnim
+trigger1 = !time
+trigger1 = selfanimexist(5900)
+value = 5900
+
+[State 3007,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 3007,PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 3007,ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 0
+movecamera = 0,0
+
+[State 3007,SelfState]
+type = SelfState
+trigger1 = time = 720
+value = 5050
+;---------------------------------------------------------------------------
+; Dexo-Transformer (Falling)
+[Statedef 3008]
+type = S
+movetype = H
+physics = S
+poweradd = 0
+anim = 5030
+ctrl = 0
+
+[State 3008,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 3008,PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 3008,ScreenBound]
+type = ScreenBound
+trigger1 =1
+value = 0
+movecamera = 0,0
+
+[State 3008,PosSet]
+type = PosSet
+trigger1 = time = 0
+trigger1 = Facing = -1
+x = 200
+y = 200
+
+[State 3008,VelSet]
+type = VelSet
+trigger1 = time = [5,100]
+trigger1 = Facing = -1
+x = 4
+y = -5
+
+[State 3008,PosSet]
+type = PosSet
+trigger1 = time = 0
+trigger1 = Facing = 1
+x = -200
+y = 200
+
+[State 3008,VelSet]
+type = VelSet
+trigger1 = time = [5,100]
+trigger1 = Facing = 1
+x = 4
+y = -5
+
+[State 3008,SelfState]
+type = SelfState
+trigger1 = time = 50
+value = 5050
+;---------------------------------------------------------------------------
+; Robo-Dexo 2000 (hyper)
+[Statedef 3050]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3050
+ctrl = 0
+sprpriority = 2
+
+[State 3050,Voice]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3000,2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3050,Transformation]
+type = PlaySnd
+trigger1 = AnimElem = 18
+value = s192,4
+
+[State 3050,Jump]
+type = PlaySnd
+trigger1 = AnimElem = 13
+value = s191,0
+
+[State 3050,Jump]
+type = PlaySnd
+trigger1 = AnimElem = 22
+value = s1000,15
+
+[State 3050,Magic transformation]
+type = explod
+trigger1 = AnimElem = 18
+anim = 701
+postype = p1
+sprpriority = 3
+pos = 0,-30
+bindtime = 1
+removeongethit = 1
+ownpal = 1
+scale = .5,.5
+supermovetime = 50
+pausemovetime = 50
+
+[State 3050,Flash For Dexter Hyper]
+type = EnvColor
+trigger1 = AnimElem = 2
+value = 240,240,240
+time = 3
+
+[State 3050,BGPalFX]
+type = BGPalFX
+trigger1 = time = 0
+time = 30
+add = 256,256,256
+mul = 0,0,0
+color = 256
+ignorehitpause = 1
+
+[State 3050,Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -3
+supermovetime = -1
+removetime = 60
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 3050,Hyper Background]
+type = Explod
+trigger1 = AnimElem = 2
+id = 1081
+anim = 1081
+pos = 0,0
+postype = back
+sprpriority = -9
+removeongethit = 1
+removetime = 90
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .5,.5
+
+[State 3050,Letter D]
+type = explod
+trigger1 = AnimElem = 2
+anim = 1082
+ID = 1082
+postype = Left
+sprpriority = -3
+supermovetime = -1
+pausemovetime = -1
+removetime = 40
+Pausemovetime = -1
+supermove = -1
+scale = .5,.5
+pos= 160,120
+
+[State 3050,Hyper PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S7500,1
+
+[State 3050,SuperPause 0]
+type = SuperPause
+trigger1 = AnimElem = 2
+pos = -5, -55
+anim = 100
+sound = s7500, 0
+poweradd = -1000
+time = 92
+movetime = 92
+
+[State 3050,SuperPause 1]
+type = SuperPause
+trigger1 = AnimElem = 22
+anim = s7502
+time = 50
+movetime = 50
+pos = -15,0
+
+[State 3050,NotHitBy]
+type = NotHitBy
+trigger1 = AnimElem = 2
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 6
+
+[State 3050,VelSet]
+type = VelSet
+trigger1 = AnimElem = 22
+x = 0
+y = -20
+
+[State 3050,PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 3050,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3051
+ctrl = 0
+;---------------------------------------------------------------------------
+; Turn to Robo-Dexo 2000
+[Statedef 3051]
+type    = A
+movetype= A
+physics = N
+velset = 0, 60
+sprpriority = 3
+anim = 3051
+
+[State 3051,Falling]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s1000,16
+
+[State 3051,AfterImage]
+type = AfterImage
+trigger1 = Time = 0
+time = 30
+length = 20
+trans = add
+palcolor = 128
+paladd = 10, 10, 10
+palmul = 0.75, 0.75, 0.75
+
+[State 3051,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3054
+time = -1
+
+[State 3051,HitDef]
+type = HitDef
+trigger1 = Time = 0
+attr = S, HA
+animtype  = Hard
+damage    = 250, 10
+getpower  = 0
+priority  = 5
+guardflag = M
+hitflag = MAFD
+pausetime = 1,1
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = 0,-110
+hitsound   = s5,17
+guardsound = s3000,10
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 26
+ground.velocity = 0,-2
+guard.velocity = -11
+air.velocity = 0,-2
+airguard.velocity = -4.5,-5
+envshake.time = 25           ;Parameters for shaking the screen on hit
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1                 ;Force p2 to face p1 on hit
+fall = 1
+fall.recover = 0             ;Prevent p2 from recovering
+fall.envshake.ampl = 6       ;Parameters for shaking the screen on fall
+fall.envshake.freq = 178
+fall.envshake.time = 15
+Id = 12
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+airguard.cornerpush.veloff = 0
+
+[State 3051,Width]
+type = Width
+trigger1 = 1
+edge = 10,10
+player = 70,70
+
+[State 3051,Getting Squashed]
+type = TargetState
+triggerall = numtarget(12)
+trigger1 = target(12), stateno != [1242,1243]
+trigger1 = var(12) = 1
+value = 1242
+ID = 12
+ignorehitpause = 1
+
+[State 3051,Ground]
+type = ChangeState
+trigger1 = Pos Y >= 0
+value = 3052
+;------------------
+; Giant Dexo-Robo
+[Statedef 3052]
+type    = A
+movetype= A
+physics = N
+velset = 0, 0
+sprpriority = 3
+anim = 3052
+
+[State 3052,Robo-Ground]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,20
+
+[State 3052,Dexter:Giant Dexo-Robo!]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3100,1
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3052,Ground]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s1000,17
+
+[State 3052,Dust]
+type = Explod
+trigger1 = time = 0
+anim = 7502
+scale = 2,2
+sprpriority = 100
+
+[State 3052,EnvShake]
+type = EnvShake
+trigger1 = time = 0
+time = 30
+freq = 90
+ampl = -4
+
+[State 3052,Kill Afterimages]
+type = AfterImageTime
+trigger1 = Time = 0
+time = 10
+
+[State 3052,Reset Pos]
+type = PosSet
+trigger1 = Pos Y > 0
+Y = 0
+
+[State 3052,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3054
+time = -1
+
+[State 3052,Width]
+type = Width
+trigger1 = 1
+edge = 10,10
+player = 70,70
+
+[State 3052,You can hit me now.]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3053
+;------------------
+; Now Hit me! or else i will leaving!
+; Why? Because you can see these spectacular encodings!
+[Statedef 3053]
+type = S
+movetype = I
+physics = N
+anim = 3053
+
+[State 3053,Voice]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = s1000,22
+
+[State 3053,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3054
+time = -1
+
+[State 3053,Width]
+type = Width
+trigger1 = 1
+edge = 10,10
+player = 70,70
+
+[State 3053,leaving!]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3059
+ctrl = 0
+;------------------
+; Robo-Dexo 2000 Gets hit (Full Lifebar)
+[Statedef 3054]
+type = S
+movetype = I
+physics = N
+anim = 3054
+
+[State 3054,Dexter Voice]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3054,Robo-Dexo Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3054,Dexo-Robo lifebar]
+type = explod
+trigger1 = time = 0
+anim = 3040
+ID = 3051
+postype = p1
+sprpriority = 3
+pos = 0,20
+ownpal = 1
+bindtime = -1
+removetime = -1
+removeongethit = 1
+scale = .5,.5
+
+[State 3054,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3055
+time = -1
+
+[State 3054,NotHitBy]
+type = NotHitBy
+trigger1 = Time = [0,10]
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3054,Width]
+type = Width
+trigger1 = 1
+edge = 10,10
+player = 70,70
+
+[State 3054,Reset Pose]
+type = PosSet
+trigger1 = Pos Y > 0
+Y = 0
+
+[State 3054,leaving!]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3059
+ctrl = 0
+;------------------
+; Robo-Dexo 2000 Gets hit (Half Lifebar)
+[Statedef 3055]
+type = S
+movetype = I
+physics = N
+anim = 3054
+
+[State 3055,Dexter Voice]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3055,Robo-Dexo Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3055,Dexo-Robo lifebar]
+type = explod
+trigger1 = time = 0
+anim = 3041
+ID = 3051
+postype = p1
+sprpriority = 3
+pos = 0,20
+ownpal = 1
+bindtime = -1
+removetime = -1
+removeongethit = 1
+scale = .5,.5
+
+[State 3055,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3056
+time = -1
+
+[State 3055,NotHitBy]
+type = NotHitBy
+trigger1 = Time = [0,10]
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3055,Width]
+type = Width
+trigger1 = 1
+edge = 10,10
+player = 70,70
+
+[State 3055,leaving!]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3059
+ctrl = 0
+;------------------
+; Robo-Dexo 2000 Gets hit (Half-low Lifebar)
+[Statedef 3056]
+type = S
+movetype = I
+physics = N
+anim = 3054
+
+[State 3056,Dexter Voice]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3056,Robo-Dexo Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3056,Dexo-Robo lifebar]
+type = explod
+trigger1 = time = 0
+anim = 3042
+ID = 3051
+postype = p1
+sprpriority = 3
+pos = 0,20
+ownpal = 1
+bindtime = -1
+removetime = -1
+removeongethit = 1
+scale = .5,.5
+
+[State 3056,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3057
+time = -1
+
+[State 3056,NotHitBy]
+type = NotHitBy
+trigger1 = Time = [0,10]
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3056,Width]
+type = Width
+trigger1 = 1
+edge = 10,10
+player = 70,70
+
+[State 3056,leaving!]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3059
+ctrl = 0
+;------------------
+; Robo-Dexo 2000 Gets hit (low Lifebar)
+[Statedef 3057]
+type = S
+movetype = I
+physics = N
+anim = 3054
+
+[State 3057,Dexter Voice]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3057,Robo-Dexo Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3057,Dexo-Robo lifebar]
+type = explod
+trigger1 = time = 0
+anim = 3043
+ID = 3051
+postype = p1
+sprpriority = 3
+pos = 0,20
+ownpal = 1
+bindtime = -1
+removetime = -1
+removeongethit = 1
+scale = .5,.5
+
+[State 3057,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3058
+time = -1
+
+[State 3057,NotHitBy]
+type = NotHitBy
+trigger1 = Time = [0,10]
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3057,Width]
+type = Width
+trigger1 = 1
+edge = 10,10
+player = 70,70
+
+[State 3054,leaving!]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3059
+ctrl = 0
+;------------------
+; Robo-Dexo 2000 broken
+[Statedef 3058]
+type = S
+movetype = I
+physics = N
+anim = 3055
+
+[State 3058,Dexter Voice]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = S3050,2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3058,Dexo-Robo lifebar]
+type = explod
+trigger1 = time = 0
+anim = 3044
+ID = 3051
+postype = p1
+sprpriority = 3
+pos = 0,20
+ownpal = 1
+bindtime = -1
+removetime = -1
+removeongethit = 1
+scale = .5,.5
+
+[State 3058,Robo-Dexo Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3058,Explosion Explod For Robo-Dexo]
+type = explod
+trigger1 = AnimElem = 1
+anim = 3045
+postype = p1
+sprpriority = 3
+pos = 0,-50
+ownpal = 1
+removetime = 54
+removeongethit = 1
+scale = 2,2
+
+[State 3058,Explosion Explod For Robo-Dexo Ground]
+type = explod
+trigger1 = time = 50
+anim = 3045
+postype = p1
+sprpriority = 4
+pos = 170,-20
+ownpal = 1
+removetime = 54
+removeongethit = 1
+scale = 2,2
+
+[State 3058,Robo-Dexo Ground]
+type = PlaySnd
+trigger1 = time = 50
+value = s3000,10
+
+[State 3058,PosAdd]
+type = PosAdd
+trigger1 = time = 60
+x = 170
+
+[State 3058,Flash from Explosion]
+type = EnvColor
+trigger1 = time = 50
+value = 240,240,240
+time = 10
+
+[State 3058,Explosion Sound]
+type = PlaySnd
+trigger1 = time = 50
+value = s1000,13+random%2
+volume = 255
+
+[State 3058,AngleSet]
+type = AngleSet
+trigger1 = Time = 0
+value = 1
+
+[State 3058,AngleDraw]
+type = AngleDraw
+trigger1 = 1
+
+[State 3058,Falling from RPG Maker 2000/2003]
+type = PlaySnd
+trigger1 = time = 20
+value = s1000,23
+
+[State 3058,AngleMul]
+type = AngleAdd
+trigger1 = Time = [20,50]
+value = -3
+
+[State 3058,AngleMul]
+type = AngleAdd
+trigger1 = Time = 60
+value = 0
+
+[State 3058,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 5000
+time = 0
+
+[State 3058,NotHitBy]
+type = NotHitBy
+trigger1 = Time = [0,60]
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 10
+
+[State 3058,Jump Out from broken Robo-Dexo]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3062
+ctrl = 0
+;------------------
+; Robo-Dexo 2000 leaving
+[Statedef 3059]
+type = S
+movetype = I
+physics = N
+anim = 3059
+
+[State 3059,Robo-Dexo Super Jump]
+type = PlaySnd
+trigger1 = time = 6
+value = s1000,21
+
+[State 3059,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 5000
+time = 0
+
+[State 3059,Dust]
+type = Explod
+trigger1 = time = 5
+anim = 7502
+scale = 2,2
+sprpriority = 3
+
+[State 3059,Fly Away~]
+type = VelSet
+trigger1 = time = 6
+Y = -30
+
+[State 3059,Back to Dexter]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3060
+ctrl = 0
+
+;---------------------------------------------------------------------------
+; And..............I AM BACK!
+[Statedef 3060]
+type    = A
+movetype= A
+physics = N
+velset = 0, 60
+sprpriority = 3
+anim = 3060
+
+[State 3060,AfterImage]
+type = AfterImage
+trigger1 = Time = 0
+time = 30
+length = 20
+trans = add
+palcolor = 128
+paladd = 10, 10, 10
+palmul = 0.75, 0.75, 0.75
+
+[State 3060,Land]
+type = ChangeState
+trigger1 = Pos Y >= 0
+value = 3061
+;---------------------------------------------------------------------------
+; Return from Robo-Dexo 2000
+[Statedef 3061]
+type    = A
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3061
+ctrl = 0
+sprpriority = 2
+
+[State 3061,Transformation]
+type = PlaySnd
+trigger1 = time = 10
+value = s192,4
+
+[State 3061,Magic transformation]
+type = explod
+trigger1 = time = 10
+anim = 701
+postype = p1
+sprpriority = 3
+pos = 0,-30
+bindtime = 1
+ownpal = 1
+scale = .5,.5
+supermove = 50
+pausemove = 50
+
+[State 3061,NotHitBy]
+type = NotHitBy
+trigger1 = AnimElem = 2
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 22
+
+[State 3061,PalFXWiz]
+type = PalFX
+trigger1 = time = 10
+time = 22
+add = 256,256,256
+mul = 256,256,256
+sinadd = -256,256,256,1
+invertall = 0
+color = 0
+
+[State 3061,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;------------------
+; Escape from Robo-Dexo 2000
+[Statedef 3062]
+type    = A
+physics = N
+juggle  = 1
+anim = 3058
+sprpriority = 1
+velset = -2,-15
+
+[State 3062,Jump out]
+type = PlaySnd
+trigger1 = time = 0
+value = s3000,11
+
+[State 3062,Head out]
+type = Helper
+trigger1 = time = 0
+name = "Robo-Dexo 2000 Head"
+stateno = 3064
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3062,Body out]
+type = Helper
+trigger1 = time = 0
+name = "Robo-Dexo 2000 Body"
+stateno = 3065
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3062,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3062,Gravity]
+type = VelAdd
+trigger1 = 1
+y = .44
+
+[State 3062,Getting Dizzy]
+type = ChangeState
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 3063
+ctrl = 0
+;---------------------------------------------------------------------------
+; Escape from Robo-Dexo 2000(Dizzy)
+[Statedef 3063]
+type    = A
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 5170
+ctrl = 0
+sprpriority = 2
+
+[State 0, EnvShake]
+type = EnvShake
+trigger1 = Time = 0
+time = 5
+freq = 60
+ampl = -4
+phase = 90
+
+[State 5100, 10]
+type = PlaySnd
+trigger1 = Time = 0
+value = s7,1
+
+[State 5100, 14]
+type = Explod
+trigger1 = time = 0
+anim = f61
+pos = 0,0
+postype = p1
+
+[State 3063,Get up from LieDown]
+type = ChangeAnim
+trigger1 = time = 4
+value = 5110
+ignorehitpause = 1
+
+[State 3063,Get up from LieDown]
+type = ChangeAnim
+trigger1 = time = 14
+value = 5120
+ignorehitpause = 1
+
+[State 3063,Dizzy]
+type = ChangeAnim
+trigger1 = time = 34
+value = 5300
+ignorehitpause = 1
+
+[State 3063,NotHitBy]
+type = NotHitBy
+trigger1 = Time = [0,25]
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3063,VelSet]
+type = VelSet
+trigger1 = Pos Y >= -0
+trigger1 = Vel Y >= 0
+y = 0
+
+[State 3063,PosSet]
+type = PosSet
+trigger1 = Pos Y >= -0
+trigger1 = Vel Y >= 0
+y = 0
+
+[State 3063,End]
+type = ChangeState
+trigger1 = Time = 150
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Robo-Dexo Head out
+[Statedef 3064]
+type    = A
+movetype= A
+physics = N
+poweradd = 0
+velset = -5+random%-2,-15+random%3
+sprpriority = 3
+anim = 3056
+ctrl = 0
+
+[State 3064,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause = 1
+flag = noshadow
+
+[State 3064,AngleSet]
+type = AngleSet
+trigger1 = Time = 0
+value = 1
+
+[State 3064,AngleMul]
+type = AngleAdd
+trigger1 = Time > 0
+value = 15
+
+[State 3064,Varset]
+type = varset
+trigger1 = time = 0
+fvar(0) = 0
+
+[State 3064,Varadd]
+type = varadd
+trigger1 = time%3 = 0
+fv = 0
+value = 0.1
+ignorehitpause = 1
+
+[State 3064,Angledraw]
+type = angledraw
+trigger1 = 1
+scale = fvar(0), fvar(0)
+ignorehitpause = 1
+
+[State 3064,VelAdd]
+type = VelAdd
+trigger1 = pos y < 0
+y = .44
+
+[State 3064,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 3064,Destroy]
+type = DestroySelf
+trigger1 = AnimTime = 0
+;---------------------------------------------------------------------------
+; Robo-Dexo Body out
+[Statedef 3065]
+type    = A
+movetype= A
+physics = N
+poweradd = 0
+velset = 5+random%2,-15+random%3
+sprpriority = 3
+anim = 3057
+ctrl = 0
+
+[State 3065,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+ignorehitpause = 1
+flag = noshadow
+
+[State 3065,AngleSet]
+type = AngleSet
+trigger1 = Time = 0
+value = 1
+
+[State 3065,AngleMul]
+type = AngleAdd
+trigger1 = Time > 0
+value = 15
+
+[State 3065,Varset]
+type = varset
+trigger1 = time = 0
+fvar(0) = 0
+
+[State 3065,Varadd]
+type = varadd
+trigger1 = time%3 = 0
+fv = 0
+value = 0.1
+ignorehitpause = 1
+
+[State 3065,Angledraw]
+type = angledraw
+trigger1 = 1
+scale = fvar(0), fvar(0)
+ignorehitpause = 1
+
+[State 3065,VelAdd]
+type = VelAdd
+trigger1 = pos y < 0
+y = .44
+
+[State 3065,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 3065,Destroy]
+type = DestroySelf
+trigger1 = AnimTime = 0
+;---------------------------------------------------------------------------------------------
+;Getting Squashed
+[Statedef 1242]
+type = S
+movetype = H
+physics = N
+velset = 0,0
+
+[State 1242,Don't get hit out of this]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 1242,Don't push me!]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 1242,Anim 0]
+type = ChangeAnim
+trigger1 = time = [0,2]
+trigger1 = selfanimexist(7689) = 1
+value = 7689
+elem = 1
+
+[State 1242,Anim 1]
+type = ChangeAnim
+trigger1 = time = [3,5]
+trigger1 = selfanimexist(7689) = 1
+value = 7689
+elem = 2
+
+[State 1242,Anim 2]
+type = ChangeAnim
+trigger1 = time = [6,8]
+trigger1 = selfanimexist(7689) = 1
+value = 7689
+elem = 3
+
+[State 1242,Anim 3]
+type = ChangeAnim
+trigger1 = time = [9,150]
+trigger1 = selfanimexist(7689) = 1
+value = 7689
+elem = 4
+
+[State 1242,Get Up]
+type = SelfState
+trigger1 = Time = 150
+trigger1 = Alive
+value = 5050
+
+[State 1242,When You Dead]
+type = SelfState
+trigger1 = Time = 150
+trigger1 = !Alive
+value = 5110
+
+[State 1242,Or if you didn't have squashed Anim]
+type = changestate
+trigger1 = time = 0
+trigger1 = selfanimexist(7689) = 0
+value = 1243
+
+[State 1242,PosAdd]
+type = PosAdd
+trigger1 = pos y < 0
+y = 10
+
+[State 1242,PosSet]
+type = PosSet
+trigger1 = pos y > 0
+y = 0
+
+[State 1242,VelSet]
+type = VelSet
+trigger1 = pos y >= 0
+x = 0
+y = 0
+;---------------------------------------------------------------------------------------------
+;Squashed 2(borrowed from Zeeky H. Bomb by NeoKamek)
+[Statedef 1243]
+type = S
+movetype = H
+physics = N
+anim = 5110
+velset = 0,0
+
+[State 1243,Don't get hit out of this]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+
+[State 1243,Don't push me!]
+type = PlayerPush
+trigger1 = 1
+value = 0
+
+[State 1243,Squished!]
+type = AngleDraw
+trigger1 = 1
+scale = 1.0, 0.1
+
+[State 1243,Get Back To Normal]
+type = AngleDraw
+trigger1 = Time > 140 && Time <= 150
+angle = 0
+scale = 1.0, Time - 140
+
+[State 1243,Reset AngleDraws]
+type = AngleDraw
+trigger1 = Time = 150
+scale = 1.0, 1.0
+angle = 0
+
+[State 1243,PosAdd]
+type = PosAdd
+trigger1 = pos y < 0
+y = 10
+
+[State 1243,PosSet]
+type = PosSet
+trigger1 = pos y > 0
+y = 0
+
+[State 1243,Get Up]
+type = SelfState
+trigger1 = Time = 150
+trigger1 = Alive
+value = 5050
+
+[State 1243,When you Dead]
+type = SelfState
+trigger1 = Time = 150
+trigger1 = !Alive
+value = 5110
+;------------------------------------------------------------------------------------------
+; Hit by  - shaking from the hit
+; (a custom gethit state)
+[Statedef 9024]
+type    = A
+movetype= H
+physics = N
+velset = 0,0
+
+[State 5020, 1] ;Anim for HIT_LIGHT to HIT_HARD
+type = ChangeAnim ;2
+trigger1 = Time = 0
+trigger1 = GetHitVar(animtype) != [3,5]
+value = ifelse((GetHitVar(airtype) = 1),5000,5010) + GetHitVar(animtype)
+
+[State 5000, 2] ;Anim for HIT_BACK
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = GetHitVar(animtype) = [3,5]
+value = 5030
+
+[State 5000, 3] ;Anim for HIT_UP/HIT_DIAGUP (only if it exists)
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = (GetHitVar(animtype) = [4,5]) && (SelfAnimExist(5047 + GetHitVar(animtype)))
+value = 5047 + GetHitVar(animtype) ;5051 - 4 + type
+
+[State 5050, 2] ; anim for trip
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = GetHitVar(groundtype) = 3
+trigger1 = SelfAnimExist(5070)
+value = 5070
+
+[State 9020, State]
+type = ChangeState
+trigger1 = HitShakeOver = 1
+value = 9030
+
+;------------------
+; Hit by - flying through the air
+; (a custom gethit state)
+[Statedef 9030]
+type    = A
+movetype= H
+physics = N
+
+[State 9030, Velocity]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 9030, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .88
+
+[State 9030, No scroll]
+type = ScreenBound
+triggerall = Pos y < -15
+trigger1 = BackEdgeBodyDist < 65
+trigger2 = FrontEdgeBodyDist < 65
+value = 1
+movecamera = 0,1
+
+[State 9030, Hit wall]
+type = ChangeState
+triggerall = Pos y < -15
+trigger1 = BackEdgeBodyDist <= 20
+trigger2 = FrontEdgeBodyDist <= 20
+value = 9027
+
+[State 5050, 1] ;Change anim when done with transition
+type = ChangeAnim
+trigger1 = AnimTime = 0
+trigger1 = Anim = 5035
+trigger2 = Time = 0     ;If no transition anim
+trigger2 = Anim != 5035
+trigger2 = (Anim != [5051, 5059]) && (Anim != [5061, 5069])
+trigger2 = Anim != 5090 ;Not if hit off ground anim
+value = 5050
+trigger2 = Anim != 5070
+
+[State 5050, 2] ;Coming down anim
+type = ChangeAnim
+trigger1 = anim = [5050,5059]
+trigger1 = Vel Y >= ifelse(anim = 5050, 1, -2)
+trigger1 = SelfAnimExist(anim+10)
+value = anim+10
+persistent = 0
+
+
+[State 5050, 2] ;Coming down anim for trip
+type = ChangeAnim
+trigger1 = anim = 5070
+trigger1 = Vel Y >= 0
+trigger1 = SelfAnimExist(anim-10) || SelfAnimExist(5071)
+value = ifelse(SelfAnimExist(5071),5071,anim-10)
+persistent = 0
+
+
+[State 5035, 3]
+type = null;ChangeState
+triggerall = !HitFall
+trigger1 = HitOver  ;Hit is over
+trigger2 = AnimTime = 0 ;Animation over
+trigger3 = Vel Y > 0    ;Hit ground
+trigger3 = Pos Y >= 10  ;.
+trigger4 = Time = 0     ;No transition anim
+trigger4 = Anim != 5035 ;.
+value = 5040 ;HITA_RECOV
+
+[State 5050, 4] ;Recover near ground
+type = null;ChangeState
+triggerall = Vel Y > 0
+triggerall = Pos Y >= -20
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5200 ;HITFALL_RECOVER
+
+[State 5050, 5]; Recover in mid air
+type = null;ChangeState
+triggerall = Vel Y > -1
+triggerall = alive
+triggerall = CanRecover
+trigger1 = Command = "recovery"
+value = 5210 ;HITFALL_AIRRECOVER
+
+[State 9030, Hit ground]
+type = SelfState
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= ifelse((anim = [5051,5059]) || (anim = [5061,5071]), 0, 25)
+value = 5100 ;HIT_BOUNCE
+
+;-----------------------------------------------------------------------------------------------------
+; Hit by  - hit wall
+; (a custom gethit state)
+[Statedef 9027]
+type    = A
+movetype= H
+physics = N
+anim = 5010
+
+[State 9027, Turn]
+type = Turn
+trigger1 = (Time = 0) && (FrontEdgeBodyDist <= 30)
+
+[State 9027, No scroll]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,1
+
+[State 9027, Spark]
+type = Explod
+trigger1 = Time = 0
+anim = F72
+pos = 0, floor (screenpos y) - 50
+postype = back
+sprpriority = 3
+
+[State 9027, Sound]
+type = PlaySnd
+trigger1 = Time = 0
+value = F7,0
+
+[State 9027, State]
+type = ChangeState
+trigger1 = Time = 5
+value = 9028
+
+;------------------
+; Hit by  - bounce off wall
+; (a custom gethit state)
+[Statedef 9028]
+type    = A
+movetype= H
+physics = N
+
+
+[State 9028, 1]
+type = NotHitBy
+trigger1 = 1
+value = , NA, NP
+
+[State 9028, Vel Y]
+type = VelSet
+trigger1 = Time = 0
+y = 2
+
+[State 9028, Vel X]
+type = VelSet
+trigger1 = Time = 0
+x = 5
+
+[State 9028, Turn]
+type = null;Turn
+trigger1 = (Time = 0) && (BackEdgeDist < 30)
+
+[State 9028, Gravity]
+type = VelAdd
+trigger1 = 1
+y = .88
+
+[State 9028, Anim 5050] ;Self falling animation
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = !SelfAnimExist(5052)
+value = 5050
+
+[State 9028, Anim 5052] ;Self falling animation (diagup type)
+type = ChangeAnim
+trigger1 = Time = 0
+trigger1 = SelfAnimExist(5052)
+value = 5052
+
+[State 9028, Anim 5060] ;Coming down - normal
+type = ChangeAnim
+trigger1 = Vel Y > -2
+trigger1 = Anim = 5050
+trigger1 = SelfAnimExist(5060)
+persistent = 0
+value = 5060
+
+[State 9028, Anim 5062] ;Coming down - diagup type
+type = ChangeAnim
+trigger1 = Vel Y > -2
+trigger1 = Anim = 5052
+trigger1 = SelfAnimExist(5062)
+persistent = 0
+value = 5062
+
+[State 9028, Hit ground]
+type = SelfState
+trigger1 = (Vel y > 0) && (Pos y >= 0)
+value = 5100
+;---------------------------------------------------------------------------
+; 4-Bot
+[Statedef 3100]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3100
+ctrl = 0
+sprpriority = 2
+
+[State 3100, Flash For Dexter Hyper]
+type = EnvColor
+trigger1 = AnimElem = 2
+value = 240,240,240
+time = 8
+ignorehitpause = 1
+persistent = 1
+
+[State 3100,Hyper Background]
+type = Explod
+trigger1 = AnimElem = 2
+id = 1081
+anim = 1081
+pos = 0,0
+postype = back
+sprpriority = -9
+removeongethit = 1
+removetime = 235
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .5,.5
+
+[State 3100,Letter D]
+type = explod
+trigger1 = AnimElem = 2
+anim = 1082
+ID = 1082
+postype = Left
+sprpriority = -3
+supermovetime = -1
+pausemovetime = -1
+removetime = 40
+Pausemove = -1
+supermove = -1
+scale = .5,.5
+pos= 160,120
+
+[State 3100,Hyper PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 2
+value = S7500,1
+
+[State 3100,BGPalFX]
+type = BGPalFX
+trigger1 = time = 0
+time = 4
+add = 256,256,256
+mul = 0,0,0
+color = 256
+ignorehitpause = 1
+
+[State 3100,Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -3
+pausemovetime = -1
+supermovetime = -1
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 3100,Pause]
+type = Pause
+trigger1 = AnimElem = 1
+time = 4
+movetime = 4
+
+[State 3100,Voice]
+type = PlaySnd
+trigger1 = AnimElem = 3, 1
+value = S3100,0
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3100,Super A]
+type = SuperPause
+trigger1 = AnimElem = 2
+pos = 25, -57
+anim = 100
+sound = s7500, 0
+poweradd = -1000
+
+[State 3100,Super B]
+type = SuperPause
+trigger1 = AnimElem = 4
+pos = 25, -57
+anim = 9999
+time = 148
+movetime = 148
+
+[State 3100,Turn to 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3101
+ctrl = 0
+;---------------------------------------------------------------------------
+; Turn to 4-Bot
+[Statedef 3101]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3101
+ctrl = 0
+sprpriority = 2
+
+[State 3101,Pause]
+type = Pause
+trigger1 = AnimElem = 1
+time = 58
+movetime = 58
+
+[State 3101,Voice]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s192,4
+
+[State 3101,Voice]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = s3000,6
+
+[State 3101,Magic transformation]
+type = explod
+trigger1 = AnimElem = 1
+anim = 701
+postype = p1
+sprpriority = 3
+pos = 0,-30
+bindtime = 1
+removeongethit = 1
+ownpal = 1
+scale = .5,.5
+supermovetime = 100
+pausemovetime = 100
+
+[State 3101,PalFX]
+type = PalFX
+trigger1 = time = [0,8]
+time = 8
+add = time*32,time*32,time*32
+mul = 256,256,256
+
+[State 3101,PalFX]
+type = PalFX
+trigger1 = time = [16,32]
+time = 1
+add = 256-(time-16)*16,256-(time-16)*16,256-(time-16)*16
+mul = 256,256,256
+
+[State 3101,AngleDraw]
+type = AngleDraw
+trigger1 = time = [8,16]
+scale = .5+(time-12)*.1,.5+(time-12)*.1
+
+[State 3101,4-Bot Attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3102
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot is going to Attack
+[Statedef 3102]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3102
+ctrl = 0
+sprpriority = -5
+
+[State 3102, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+persistent = 1
+
+[State 3101,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 1
+
+[State 3102,Dust]
+type = Explod
+trigger1 = AnimElem = 2
+anim = 7501
+pos = -40,0
+sprpriority = -1
+postype = p1
+scale = .8,.8
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3102,Robo-Punch]
+type = PlaySnd
+trigger1 = AnimElem = 2
+value = s3000,5
+
+[State 3102,4-Robo-Rush Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = s3100,6
+
+[State 3102,Pause]
+type = Pause
+trigger1 = AnimElem = 1
+time = 8
+movetime = 8
+
+[State 3102,Width]
+type = Width
+trigger1 = time = 1
+edge = 0,0
+player = 100,100
+
+[State 3102,VelSet]
+type = VelSet
+trigger1 = AnimElem = 1
+trigger2 = AnimElem = 2
+trigger3 = AnimElem = 3
+x = 6
+
+[State 3102,VelSet]
+type = VelSet
+trigger1 = AnimElem = 2
+x = 8
+
+[State 3102,VelSet]
+type = VelSet
+trigger1 = AnimElem = 3
+x = 10
+
+[State 3102,VelSet]
+type = VelSet
+trigger1 = time >= 13
+x = 10
+
+[State 3102,4-Bot Attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3103
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot Attack
+[Statedef 3103]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+anim = 3103
+ctrl = 0
+sprpriority = -1
+
+[State 0, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = S3100,4
+channel = 5
+loop = 1
+
+[State 3103, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+
+[State 3103,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3103,VelSet]
+type = VelSet
+trigger1 = 1
+x = 10
+
+[State 3103,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3120
+time = -1
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%6 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = Hard
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%5 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = low
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = AnimElem = 25
+attr = S, HA
+animtype  = Up               ;Make p2 use "Up" type animation on hit
+damage    = 40, 10
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 20,30
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,2
+guardsound = s6,1
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 28
+ground.velocity = -1.3,-25
+guard.velocity = -11
+air.velocity = -1.3,-25
+airguard.velocity = -4.5,-5
+envshake.time = 25
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+mindist = 50,-100
+maxdist = 100,-10
+yaccel = .8
+id = 3100
+
+[State 3103,Make sure the target is being attacked]
+type = ChangeState
+triggerall = numtarget(3100)
+trigger1 = AnimTime = 0
+trigger1 = Movehit
+value = 3104
+anim = 3104
+ctrl = 0
+
+[State 3103,Miss attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3105
+anim = 3105
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack
+[Statedef 3104]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 1
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3104,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3130
+time = -1
+
+[State 3102,Dust]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 7502
+pos = 0,0
+sprpriority = 2
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3102,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3102,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s3000,8
+
+[State 3102,4-Robo land]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = s3000,7
+
+[State 3102,4-Robo pose!]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = s1000,22
+
+[State 3102,4-Robo Shoot]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = s1000,10
+
+[State 3102,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3102,VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = -20
+
+[State 3103,VelSet]
+type = VelSet
+trigger1 = AnimElem = 9
+x = 0
+
+[State 3102,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 9
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3102, Homemade 4-bot Shoot Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3108) = 0
+ID = 3108
+anim = 3108
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3102,Homemade 4-bot Spark Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3119) = 0
+ID = 3119
+anim = 3119
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3102,Homemade 4-bot Ray-shoot Effect]
+type = Helper
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3109) = 0
+ID = 3109
+helpertype = normal
+ignorehitpause = 1
+name = "4-bot Ray-shoot Projectile"
+facing = 1
+pos = 50,-90
+postype = P1
+stateno = 3109
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.3
+size.yscale = 0.3
+
+[State 3102,Return from 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3106
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-bot Ray-shoot Projectile
+[Statedef 3109]
+type    = A
+movetype= A
+physics = N
+sprpriority = 3
+velset = 0,0
+anim = 9999;3109
+ctrl = 0
+
+[State 1003, 1]
+type = ChangeState
+triggerall = time = 0
+trigger1 = parent, command = "holdup"
+value = 3150
+
+[State 1003, 1]
+type = ChangeState
+triggerall = time = 0
+trigger1 = parent, command = "holddown"
+value = 3152
+
+[State 1003, 1]
+type = ChangeState
+triggerall = time = 0
+trigger1 = time = 0
+trigger2 = parent, command = "holdfwd"
+value = 3151
+;---------------------------------------------------------------------------
+; 4-bot Ray-shoot Projectile Up
+[Statedef 3150]
+type    = A
+movetype= A
+physics = N
+sprpriority = 3
+anim = 3130
+velset = 0,0
+ctrl = 0
+
+[State 3109, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = 50,-90
+ignorehitpause = 1
+
+[State 3109, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 3130
+pos = 0,0
+postype = p1
+bindtime = 1
+removeongethit = 1
+sprpriority = 10
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+scale = 0.3,0.3
+
+[State 3109,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+flag2 = invisible
+ignorehitpause = 1
+
+[State 3106,NotHitBy]
+type = notHitBy
+trigger1 = 1
+value = SCA,AT
+
+[State 3106,HitDef]
+type = HitDef
+trigger1 = time = 0
+attr = S, HP
+damage    = 50,0
+animtype = DiagUp
+getpower  = 0
+givepower = 0
+guardflag = MA
+hitflag = MAF
+pausetime = 0,10
+sparkno = s1003
+guard.sparkno = s7103
+sparkxy = 0, -10
+hitsound   = S5,11
+guardsound = S6,3
+ground.type = Low
+ground.slidetime = 30
+ground.hittime  = 30
+ground.velocity = -8,0
+guard.velocity = -8
+air.animtype = DiagUp
+air.velocity = -8,-5
+airguard.velocity = -7,-4
+fall = 1
+air.fall = 1
+fall.recover = 0
+envshake.time = 5
+envshake.ampl = 7
+palfx.time = 20
+palfx.add = 0,100,50
+palfx.mul = 20,120,24
+palfx.sinadd = -85,110,55,10
+palfx.color = 0;
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+airguard.cornerpush.veloff = 0
+
+[State 3106,Destroy]
+type = DestroySelf
+trigger1 = time = 25
+;---------------------------------------------------------------------------
+; 4-bot Ray-shoot Projectile
+[Statedef 3151]
+type    = A
+movetype= A
+physics = N
+sprpriority = 3
+anim = 3131
+velset = 0,0
+ctrl = 0
+
+[State 3109, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = 50,-90
+ignorehitpause = 1
+
+[State 3109, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 3131
+pos = 0,0
+postype = p1
+bindtime = 1
+removeongethit = 1
+sprpriority = 10
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+scale = 0.3,0.3
+
+[State 3109,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+flag2 = invisible
+ignorehitpause = 1
+
+[State 3106,NotHitBy]
+type = notHitBy
+trigger1 = 1
+value = SCA,AT
+
+[State 3106,HitDef]
+type = HitDef
+trigger1 = MoveContact = 0
+attr = S, HP
+damage    = 50,0
+animtype = DiagUp
+getpower  = 0
+givepower = 0
+guardflag = MA
+hitflag = MAF
+pausetime = 0,10
+sparkno = s1003
+guard.sparkno = s7103
+sparkxy = 0, -10
+hitsound   = S5,11
+guardsound = S6,3
+ground.type = Low
+ground.slidetime = 30
+ground.hittime  = 30
+ground.velocity = -8,0
+guard.velocity = -8
+air.animtype = DiagUp
+air.velocity = -8,-5
+airguard.velocity = -7,-4
+fall = 1
+air.fall = 1
+fall.recover = 0
+envshake.time = 5
+envshake.ampl = 7
+palfx.time = 20
+palfx.add = 0,100,50
+palfx.mul = 20,120,24
+palfx.sinadd = -85,110,55,10
+palfx.color = 0;
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+airguard.cornerpush.veloff = 0
+
+[State 3106,Destroy]
+type = DestroySelf
+trigger1 = time = 25
+;---------------------------------------------------------------------------
+; 4-bot Ray-shoot Projectile
+[Statedef 3152]
+type    = A
+movetype= A
+physics = N
+sprpriority = 3
+anim = 3132
+velset = 0,0
+ctrl = 0
+
+[State 3109, BindToParent]
+type = BindToParent
+trigger1 = 1
+pos = 50,-90
+ignorehitpause = 1
+
+[State 0, Explod]
+type = Explod
+trigger1 = time = 0
+anim = 3132
+pos = 0,0
+postype = p1
+bindtime = 1
+removeongethit = 1
+sprpriority = 10
+ontop = 0
+shadow = 0,0,0
+ownpal = 0
+scale = 0.3,0.3
+
+[State 3109,AssertSpecial]
+type = AssertSpecial
+trigger1 = 1
+flag = noshadow
+flag2 = invisible
+ignorehitpause = 1
+
+[State 3106,NotHitBy]
+type = notHitBy
+trigger1 = 1
+value = SCA,AT
+
+[State 3106,HitDef]
+type = HitDef
+trigger1 = MoveContact = 0
+attr = S, HP
+damage    = 50,0
+animtype = DiagUp
+getpower  = 0
+givepower = 0
+guardflag = MA
+hitflag = MAF
+pausetime = 0,10
+sparkno = s1003
+guard.sparkno = s7103
+sparkxy = 0, -10
+hitsound   = S5,11
+guardsound = S6,3
+ground.type = Low
+ground.slidetime = 30
+ground.hittime  = 30
+ground.velocity = -8,0
+guard.velocity = -8
+air.animtype = DiagUp
+air.velocity = -8,-5
+airguard.velocity = -7,-4
+fall = 1
+air.fall = 1
+fall.recover = 0
+envshake.time = 5
+envshake.ampl = 7
+palfx.time = 20
+palfx.add = 0,100,50
+palfx.mul = 20,120,24
+palfx.sinadd = -85,110,55,10
+palfx.color = 0;
+ground.cornerpush.veloff = 0
+air.cornerpush.veloff = 0
+down.cornerpush.veloff = 0
+guard.cornerpush.veloff = 0
+airguard.cornerpush.veloff = 0
+
+[State 3106,Destroy]
+type = DestroySelf
+trigger1 = time = 25
+;---------------------------------------------------------------------------
+; 4-Bot Attack Gets hurt
+[Statedef 3120]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+ctrl = 0
+sprpriority = -1
+
+[State 3120,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3120, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+
+[State 3120,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3110
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3120,Dexter Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3120,4-Bot Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3120,VelSet]
+type = VelSet
+trigger1 = 1
+x = 10
+
+[State 3120,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3121
+time = -1
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%6 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = Hard
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%5 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = low
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = AnimElem = 25
+attr = S, HA
+animtype  = Up               ;Make p2 use "Up" type animation on hit
+damage    = 40, 10
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 20,30
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,2
+guardsound = s6,1
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 28
+ground.velocity = -1.3,-25
+guard.velocity = -11
+air.velocity = -1.3,-25
+airguard.velocity = -4.5,-5
+envshake.time = 25
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+mindist = 50,-100
+maxdist = 100,-10
+yaccel = .8
+id = 3100
+
+[State 3103,Make sure the target is being attacked]
+type = ChangeState
+triggerall = numtarget(3100)
+trigger1 = AnimTime = 0
+trigger2 = Movehit
+value = 3130
+anim = 3104
+ctrl = 0
+
+[State 3103,Miss attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3140
+anim = 3105
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot Attack Gets hurt
+[Statedef 3121]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+ctrl = 0
+sprpriority = -1
+
+[State 3121, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+
+[State 3121,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3121,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3111
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3121,Dexter Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3121,4-Bot Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3121,VelSet]
+type = VelSet
+trigger1 = 1
+x = 10
+
+[State 3122,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3122
+time = -1
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%6 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = Hard
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%5 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = low
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = AnimElem = 25
+attr = S, HA
+animtype  = Up               ;Make p2 use "Up" type animation on hit
+damage    = 40, 10
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 20,30
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,2
+guardsound = s6,1
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 28
+ground.velocity = -1.3,-25
+guard.velocity = -11
+air.velocity = -1.3,-25
+airguard.velocity = -4.5,-5
+envshake.time = 25
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+mindist = 50,-100
+maxdist = 100,-10
+yaccel = .8
+id = 3100
+
+[State 3103,Make sure the target is being attacked]
+type = ChangeState
+triggerall = numtarget(3100)
+trigger1 = AnimTime = 0
+trigger2 = Movehit
+value = 3131
+anim = 3104
+ctrl = 0
+
+[State 3103,Miss attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3141
+anim = 3105
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot Attack Gets hurt
+[Statedef 3122]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+ctrl = 0
+sprpriority = -1
+
+[State 3122, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+
+[State 3122,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3122,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3112
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3122,Dexter Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3122,4-Bot Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3122,VelSet]
+type = VelSet
+trigger1 = 1
+x = 10
+
+[State 3123,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3123
+time = -1
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%6 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = Hard
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%5 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = low
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = AnimElem = 25
+attr = S, HA
+animtype  = Up               ;Make p2 use "Up" type animation on hit
+damage    = 40, 10
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 20,30
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,2
+guardsound = s6,1
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 28
+ground.velocity = -1.3,-25
+guard.velocity = -11
+air.velocity = -1.3,-25
+airguard.velocity = -4.5,-5
+envshake.time = 25
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+mindist = 50,-100
+maxdist = 100,-10
+yaccel = .8
+id = 3100
+
+[State 3103,Make sure the target is being attacked]
+type = ChangeState
+triggerall = numtarget(3100)
+trigger1 = AnimTime = 0
+trigger2 = Movehit
+value = 3132
+anim = 3104
+ctrl = 0
+
+[State 3103,Miss attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3142
+anim = 3105
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot Attack Gets hurt
+[Statedef 3123]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+ctrl = 0
+sprpriority = -1
+
+[State 3123, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+
+[State 3123,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3123,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3113
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3123,Dexter Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3123,4-Bot Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3123,VelSet]
+type = VelSet
+trigger1 = 1
+x = 10
+
+[State 3123,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3124
+time = -1
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%6 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = Hard
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%5 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = low
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = AnimElem = 25
+attr = S, HA
+animtype  = Up               ;Make p2 use "Up" type animation on hit
+damage    = 40, 10
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 20,30
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,2
+guardsound = s6,1
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 28
+ground.velocity = -1.3,-25
+guard.velocity = -11
+air.velocity = -1.3,-25
+airguard.velocity = -4.5,-5
+envshake.time = 25
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+mindist = 50,-100
+maxdist = 100,-10
+yaccel = .8
+id = 3100
+
+[State 3103,Make sure the target is being attacked]
+type = ChangeState
+triggerall = numtarget(3100)
+trigger1 = AnimTime = 0
+trigger2 = Movehit
+value = 3133
+anim = 3104
+ctrl = 0
+
+[State 3103,Miss attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3143
+anim = 3105
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot Attack Gets hurt
+[Statedef 3124]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+ctrl = 0
+sprpriority = -1
+
+[State 3124, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+
+[State 3124,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3124,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3114
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3124,Dexter Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3124,4-Bot Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3124,VelSet]
+type = VelSet
+trigger1 = 1
+x = 10
+
+[State 3124,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3125
+time = -1
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%6 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = Hard
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%5 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = low
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = AnimElem = 25
+attr = S, HA
+animtype  = Up               ;Make p2 use "Up" type animation on hit
+damage    = 40, 10
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 20,30
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,2
+guardsound = s6,1
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 28
+ground.velocity = -1.3,-25
+guard.velocity = -11
+air.velocity = -1.3,-25
+airguard.velocity = -4.5,-5
+envshake.time = 25
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+mindist = 50,-100
+maxdist = 100,-10
+yaccel = .8
+id = 3100
+
+[State 3103,Make sure the target is being attacked]
+type = ChangeState
+triggerall = numtarget(3100)
+trigger1 = AnimTime = 0
+trigger2 = Movehit
+value = 3134
+anim = 3104
+ctrl = 0
+
+[State 3103,Miss attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3144
+anim = 3105
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot Attack Gets hurt
+[Statedef 3125]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+ctrl = 0
+sprpriority = -1
+
+[State 3125, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+
+[State 3125,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3125,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3115
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3125,Dexter Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3125,4-Bot Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3125,VelSet]
+type = VelSet
+trigger1 = 1
+x = 10
+
+[State 3125,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3126
+time = -1
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%6 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = Hard
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%5 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2) 
+guardsound = s6,1
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = low
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = AnimElem = 25
+attr = S, HA
+animtype  = Up               ;Make p2 use "Up" type animation on hit
+damage    = 40, 10
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 20,30
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,2
+guardsound = s6,1
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 28
+ground.velocity = -1.3,-25
+guard.velocity = -11
+air.velocity = -1.3,-25
+airguard.velocity = -4.5,-5
+envshake.time = 25
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+mindist = 50,-100
+maxdist = 100,-10
+yaccel = .8
+id = 3100
+
+[State 3103,Make sure the target is being attacked]
+type = ChangeState
+triggerall = numtarget(3100)
+trigger1 = AnimTime = 0
+trigger2 = Movehit
+value = 3135
+anim = 3104
+ctrl = 0
+
+[State 3103,Miss attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3145
+anim = 3105
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot Attack Gets hurt
+[Statedef 3126]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+ctrl = 0
+sprpriority = -1
+
+[State 3126, SprPriority]
+type = SprPriority
+trigger1 = 1
+value = -1
+ignorehitpause = 1
+
+[State 3126,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3126,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3116
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3126,Dexter Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = S3050,0+random%2
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 3126,4-Bot Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,18+random%2
+
+[State 3126,VelSet]
+type = VelSet
+trigger1 = 1
+x = 10
+
+[State 3126,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3127
+time = -1
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%6 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = High
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = Hard
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = !time
+trigger2 = time%5 = 0
+attr = S, HA
+animtype  = Hard
+damage    = 5,1
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 1,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,ifelse(random<330,8,0+random%2)
+guardsound = s6,1
+ground.type = low
+ground.slidetime = 10
+ground.hittime  = 20
+ground.velocity = -5,0
+ground.cornerpush.veloff = 1
+guard.velocity = -1
+air.velocity = -12,-3
+airguard.velocity = -1,-1
+air.hittime = 20
+fall.animtype = low
+fall.recover = 0
+
+[State 3103,HitDef]
+type = HitDef
+trigger1 = AnimElem = 25
+attr = S, HA
+animtype  = Up               ;Make p2 use "Up" type animation on hit
+damage    = 40, 10
+getpower  = 0
+priority  = 5
+guardflag = MA
+pausetime = 20,30
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -10,-70
+hitsound   = s5,2
+guardsound = s6,1
+ground.type = Low
+ground.slidetime = 26
+ground.hittime  = 28
+ground.velocity = -1.3,-25
+guard.velocity = -11
+air.velocity = -1.3,-25
+airguard.velocity = -4.5,-5
+envshake.time = 25
+envshake.ampl = 7
+envshake.freq = 176
+p2facing = 1
+fall = 1
+fall.recover = 0
+fall.damage = 70
+fall.envshake.ampl = 6
+fall.envshake.freq = 178
+fall.envshake.time = 15
+mindist = 50,-100
+maxdist = 100,-10
+yaccel = .8
+id = 3100
+
+[State 3103,Make sure the target is being attacked]
+type = ChangeState
+triggerall = numtarget(3100)
+trigger1 = AnimTime = 0
+trigger2 = Movehit
+value = 3136
+anim = 3104
+ctrl = 0
+
+[State 3103,Miss attack]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3146
+anim = 3105
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack Gets hurt
+[Statedef 3130]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3131,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3110
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3131,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3131
+time = -1
+
+[State 3131,Dust]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 7502
+pos = 0,0
+sprpriority = 2
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3131,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3131,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s3000,8
+
+[State 3131,4-Robo land]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = s3000,7
+
+[State 3131,4-Robo pose!]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = s1000,22
+
+[State 3131,4-Robo Shoot]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = s1000,10
+
+[State 3131,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3131,VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = -20
+
+[State 3131,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 9
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3131, Homemade 4-bot Shoot Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3108) = 0
+ID = 3108
+anim = 3108
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Spark Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3119) = 0
+ID = 3119
+anim = 3119
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Ray-shoot Effect]
+type = Helper
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3109) = 0
+ID = 3109
+helpertype = normal
+ignorehitpause = 1
+name = "4-bot Ray-shoot Projectile"
+facing = 1
+pos = 55,-90
+postype = P1
+stateno = 3109
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.3
+size.yscale = 0.3
+
+[State 3131,Return from 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3106
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack Gets hurt
+[Statedef 3131]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3131,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3111
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3131,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3132
+time = -1
+
+[State 3131,Dust]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 7502
+pos = 0,0
+sprpriority = 2
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3131,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3131,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s3000,8
+
+[State 3131,4-Robo land]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = s3000,7
+
+[State 3131,4-Robo pose!]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = s1000,22
+
+[State 3131,4-Robo Shoot]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = s1000,10
+
+[State 3131,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3131,VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = -20
+
+[State 3131,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 9
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3131, Homemade 4-bot Shoot Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3108) = 0
+ID = 3108
+anim = 3108
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Spark Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3119) = 0
+ID = 3119
+anim = 3119
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Ray-shoot Effect]
+type = Helper
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3109) = 0
+ID = 3109
+helpertype = normal
+ignorehitpause = 1
+name = "4-bot Ray-shoot Projectile"
+facing = 1
+pos = 55,-90
+postype = P1
+stateno = 3109
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.3
+size.yscale = 0.3
+
+[State 3131,Return from 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3106
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack Gets hurt
+[Statedef 3132]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3131,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3112
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3131,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3133
+time = -1
+
+[State 3131,Dust]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 7502
+pos = 0,0
+sprpriority = 2
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3131,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3131,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s3000,8
+
+[State 3131,4-Robo land]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = s3000,7
+
+[State 3131,4-Robo pose!]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = s1000,22
+
+[State 3131,4-Robo Shoot]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = s1000,10
+
+[State 3131,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3131,VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = -20
+
+[State 3131,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 9
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3131, Homemade 4-bot Shoot Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3108) = 0
+ID = 3108
+anim = 3108
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Spark Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3119) = 0
+ID = 3119
+anim = 3119
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Ray-shoot Effect]
+type = Helper
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3109) = 0
+ID = 3109
+helpertype = normal
+ignorehitpause = 1
+name = "4-bot Ray-shoot Projectile"
+facing = 1
+pos = 55,-90
+postype = P1
+stateno = 3109
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.3
+size.yscale = 0.3
+
+[State 3131,Return from 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3106
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack Gets hurt
+[Statedef 3133]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3131,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3113
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3131,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3134
+time = -1
+
+[State 3131,Dust]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 7502
+pos = 0,0
+sprpriority = 2
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3131,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3131,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s3000,8
+
+[State 3131,4-Robo land]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = s3000,7
+
+[State 3131,4-Robo pose!]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = s1000,22
+
+[State 3131,4-Robo Shoot]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = s1000,10
+
+[State 3131,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3131,VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = -20
+
+[State 3131,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 9
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3131, Homemade 4-bot Shoot Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3108) = 0
+ID = 3108
+anim = 3108
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Spark Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3119) = 0
+ID = 3119
+anim = 3119
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Ray-shoot Effect]
+type = Helper
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3109) = 0
+ID = 3109
+helpertype = normal
+ignorehitpause = 1
+name = "4-bot Ray-shoot Projectile"
+facing = 1
+pos = 55,-90
+postype = P1
+stateno = 3109
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.3
+size.yscale = 0.3
+
+[State 3131,Return from 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3106
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack Gets hurt
+[Statedef 3134]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3131,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3114
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3131,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3135
+time = -1
+
+[State 3131,Dust]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 7502
+pos = 0,0
+sprpriority = 2
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3131,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3131,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s3000,8
+
+[State 3131,4-Robo land]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = s3000,7
+
+[State 3131,4-Robo pose!]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = s1000,22
+
+[State 3131,4-Robo Shoot]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = s1000,10
+
+[State 3131,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3131,VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = -20
+
+[State 3131,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 9
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3131, Homemade 4-bot Shoot Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3108) = 0
+ID = 3108
+anim = 3108
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Spark Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3119) = 0
+ID = 3119
+anim = 3119
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Ray-shoot Effect]
+type = Helper
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3109) = 0
+ID = 3109
+helpertype = normal
+ignorehitpause = 1
+name = "4-bot Ray-shoot Projectile"
+facing = 1
+pos = 55,-90
+postype = P1
+stateno = 3109
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.3
+size.yscale = 0.3
+
+[State 3131,Return from 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3106
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack Gets hurt
+[Statedef 3135]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3131,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3115
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3131,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3136
+time = -1
+
+[State 3131,Dust]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 7502
+pos = 0,0
+sprpriority = 2
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3131,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3131,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s3000,8
+
+[State 3131,4-Robo land]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = s3000,7
+
+[State 3131,4-Robo pose!]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = s1000,22
+
+[State 3131,4-Robo Shoot]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = s1000,10
+
+[State 3131,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3131,VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = -20
+
+[State 3131,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 9
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3131, Homemade 4-bot Shoot Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3108) = 0
+ID = 3108
+anim = 3108
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Spark Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3119) = 0
+ID = 3119
+anim = 3119
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Ray-shoot Effect]
+type = Helper
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3109) = 0
+ID = 3109
+helpertype = normal
+ignorehitpause = 1
+name = "4-bot Ray-shoot Projectile"
+facing = 1
+pos = 55,-90
+postype = P1
+stateno = 3109
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.3
+size.yscale = 0.3
+
+[State 3131,Return from 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3106
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack Gets hurt
+[Statedef 3136]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3131,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3116
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3131,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3127
+time = -1
+
+[State 3131,Dust]
+type = Explod
+trigger1 = AnimElem = 9
+anim = 7502
+pos = 0,0
+sprpriority = 2
+postype = p1
+scale = 2,1
+ownpal = 1
+pausemovetime = -1
+supermovetime = -1
+
+[State 3131,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3131,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 7
+value = s3000,8
+
+[State 3131,4-Robo land]
+type = PlaySnd
+trigger1 = AnimElem = 9
+value = s3000,7
+
+[State 3131,4-Robo pose!]
+type = PlaySnd
+trigger1 = AnimElem = 10
+value = s1000,22
+
+[State 3131,4-Robo Shoot]
+type = PlaySnd
+trigger1 = AnimElem = 11
+value = s1000,10
+
+[State 3131,Width]
+type = Width
+trigger1 = 1
+edge = 80,80
+player = 80,80
+
+[State 3131,VelSet]
+type = VelSet
+trigger1 = AnimElem = 7
+x = -20
+
+[State 3131,EnvShake]
+type = EnvShake
+trigger1 = AnimElem = 9
+time = 10
+freq = 70
+ampl = -10
+phase = 90
+
+[State 3131, Homemade 4-bot Shoot Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3108) = 0
+ID = 3108
+anim = 3108
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Spark Effect]
+type = explod
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3119) = 0
+ID = 3119
+anim = 3119
+postype = p1
+sprpriority = 3
+pausemovetime = -1
+supermovetime = -1
+pos = 55,-90
+bindtime = -1
+removeongethit = 1
+
+[State 3131,Homemade 4-bot Ray-shoot Effect]
+type = Helper
+trigger1 = AnimElem = 11
+trigger1 = NumExplod(3109) = 0
+ID = 3109
+helpertype = normal
+ignorehitpause = 1
+name = "4-bot Ray-shoot Projectile"
+facing = 1
+pos = 55,-90
+postype = P1
+stateno = 3109
+keyctrl = 0
+ownpal = 1
+size.xscale = 0.3
+size.yscale = 0.3
+
+[State 3131,Return from 4-Bot]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3106
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack (Miss Attack)
+[Statedef 3105]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3105,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3140
+time = -1
+
+[State 3105,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3105,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s3000,8
+
+[State 3105,4-Robo Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 70,70
+
+[State 3105,4-Robo VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = -20
+
+[State 3105,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3107
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack (Miss Attack) Gets hurt
+[Statedef 3140]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3140,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3110
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3105,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3141
+time = -1
+
+[State 3105,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3105,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s3000,8
+
+[State 3105,4-Robo Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 70,70
+
+[State 3105,4-Robo VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = -20
+
+[State 3105,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3107
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack (Miss Attack) Gets hurt
+[Statedef 3141]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3140,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3111
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3105,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3142
+time = -1
+
+[State 3105,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3105,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s3000,8
+
+[State 3105,4-Robo Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 70,70
+
+[State 3105,4-Robo VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = -20
+
+[State 3105,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3107
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack (Miss Attack) Gets hurt
+[Statedef 3142]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3140,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3112
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3105,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3143
+time = -1
+
+[State 3105,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3105,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s3000,8
+
+[State 3105,4-Robo Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 70,70
+
+[State 3105,4-Robo VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = -20
+
+[State 3105,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3107
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack (Miss Attack) Gets hurt
+[Statedef 3143]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3140,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3113
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3105,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3144
+time = -1
+
+[State 3105,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3105,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s3000,8
+
+[State 3105,4-Robo Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 70,70
+
+[State 3105,4-Robo VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = -20
+
+[State 3105,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3107
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack (Miss Attack) Gets hurt
+[Statedef 3144]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3140,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3114
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3105,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3145
+time = -1
+
+[State 3105,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3105,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s3000,8
+
+[State 3105,4-Robo Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 70,70
+
+[State 3105,4-Robo VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = -20
+
+[State 3105,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3107
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack (Miss Attack) Gets hurt
+[Statedef 3145]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3140,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3115
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3105,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3146
+time = -1
+
+[State 3105,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3105,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s3000,8
+
+[State 3105,4-Robo Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 70,70
+
+[State 3105,4-Robo VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = -20
+
+[State 3105,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3107
+ctrl = 0
+;---------------------------------------------------------------------------
+; 4-Bot last Attack (Miss Attack) Gets hurt
+[Statedef 3146]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3140,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3116
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3105,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3127
+time = -1
+
+[State 3105,4-Robo-move Sound from Ego Trip]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s3100,5
+
+[State 3105,4-Robo Jump]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s3000,8
+
+[State 3105,4-Robo Width]
+type = Width
+trigger1 = 1
+edge = 0,0
+player = 70,70
+
+[State 3105,4-Robo VelSet]
+type = VelSet
+trigger1 = AnimElem = 5
+x = -20
+
+[State 3105,ChangeState]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3107
+ctrl = 0
+;---------------------------------------------------------------------------
+; Escape from 4-Bot
+[Statedef 3127]
+type    = A
+physics = N
+juggle  = 1
+anim = 3058
+sprpriority = 1
+velset = -2,-15
+
+[State 3062,Jump out]
+type = PlaySnd
+trigger1 = time = 0
+value = s3000,11
+
+[State 3062,Explosion Sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,13+random%2
+volume = 255
+
+[State 3062,4-Bot broken]
+type = Helper
+trigger1 = time = 0
+name = "4-Bot broken"
+stateno = 3118
+pos = 0,0
+postype = p1    ;p2,front,back,left,right
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+
+[State 3062,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3062,Gravity]
+type = VelAdd
+trigger1 = 1
+y = .44
+
+[State 3127,4-Bot lifebar]
+type = Explod
+trigger1 = time = 0
+trigger1 = NumExplod(3110) = 0
+id = 3110
+anim = 3117
+pos = 74,234
+postype = back
+sprpriority = 100
+removeongethit = 1
+removetime = -1
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .47,.5
+
+[State 3058,Explosion Explod For Robo-Dexo]
+type = explod
+trigger1 = AnimElem = 1
+anim = 3045
+postype = p1
+sprpriority = 3
+pos = 0,-50
+ownpal = 1
+removetime = 54
+removeongethit = 1
+scale = 1,1
+
+[State 3126,4-Bot Gets hurt sound]
+type = PlaySnd
+trigger1 = time = 0
+value = s3000,10
+
+[State 3126,HitOverride]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3127
+time = 0
+
+[State 3062,Getting Dizzy]
+type = ChangeState
+trigger1 = Vel Y > 0 && Pos Y >= 0
+value = 3063
+ctrl = 0
+;---------------------------------------------------------------------------------------------
+; 4-Bot broken
+[statedef 3118]
+type = A
+physics = N
+velset = 0,0
+anim = 3118
+sprpriority = -1
+ctrl = 0
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 1015, VelAdd]
+type = VelAdd
+trigger1 = pos y < 0
+y = .88
+
+[State 1015, PosSet]
+type = PosSet
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+y = 0
+
+[State 1015, NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA
+time = 1
+
+[State 1015, gone]
+type = DestroySelf
+trigger1 = time = 150
+;---------------------------------------------------------------------------
+; Return from 4-Bot
+[Statedef 3106]
+type    = A
+movetype= A
+juggle  = 4
+velset = 0,0
+anim = 3106
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3059,Restore]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 5000
+time = 0
+
+[State 3101,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3104,Transformation]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s192,4
+
+[State 3104,Magic transformation]
+type = explod
+trigger1 = AnimElem = 1
+anim = 701
+postype = p1
+sprpriority = 3
+pos = 0,-30
+bindtime = 1
+removeongethit = 1
+ownpal = 1
+scale = .5,.5
+supermovetime = 100
+pausemovetime = 100
+
+[State 3104,PalFX]
+type = PalFX
+trigger1 = time = [0,8]
+time = 8
+add = time*32,time*32,time*32
+mul = 256,256,256
+
+[State 3104,PalFX]
+type = PalFX
+trigger1 = time = [16,20]
+time = 1
+add = 256-(time-16)*16,256-(time-16)*16,256-(time-16)*16
+mul = 256,256,256
+
+[State 3104,AngleDraw]
+type = AngleDraw
+trigger1 = time = [8,15]
+scale = 1.0 -(time-10)*0.1,1.0 -(time-10)*0.1
+
+[State 3104,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Return from 4-Bot(Miss Attack)
+[Statedef 3107]
+type    = A
+movetype= A
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3107
+ctrl = 0
+sprpriority = 2
+
+[State 3130, 4-Bot sound]
+type = StopSnd
+trigger1 = 1
+Channel = 5
+
+[State 3059,Restore]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 5000
+time = 0
+
+[State 3101,NotHitBy]
+type = NotHitBy
+trigger1 = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 2
+
+[State 3108,Transformation]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s192,4
+
+[State 3108,Magic transformation]
+type = explod
+trigger1 = AnimElem = 1
+anim = 701
+postype = p1
+sprpriority = 3
+pos = 0,-30
+bindtime = 1
+removeongethit = 1
+ownpal = 1
+scale = .5,.5
+supermovetime = 100
+pausemovetime = 100
+
+[State 3108,PalFX]
+type = PalFX
+trigger1 = time = [0,8]
+time = 8
+add = time*32,time*32,time*32
+mul = 256,256,256
+
+[State 3108,PalFX]
+type = PalFX
+trigger1 = time = [16,20]
+time = 1
+add = 256-(time-16)*16,256-(time-16)*16,256-(time-16)*16
+mul = 256,256,256
+
+[State 3108,AngleDraw]
+type = AngleDraw
+trigger1 = time = [8,15]
+scale = 1.0 -(time-10)*0.1,1.0 -(time-10)*0.1
+
+[State 3108,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Mom-Droid Hyper
+[Statedef 3200]
+type    = S
+movetype= A
+physics = S
+velset = 0,0
+anim = 3200
+ctrl = 0
+sprpriority = 2
+
+[State 3200,Flash For Dexter Hyper]
+type = EnvColor
+trigger1 = AnimElem = 5
+value = 240,240,240
+time = 8
+ignorehitpause = 1
+persistent = 1
+
+[State 3200,Hyper Background]
+type = Explod
+trigger1 = AnimElem = 5
+id = 1081
+anim = 1081
+pos = 0,0
+postype = back
+sprpriority = -9
+removeongethit = 1
+removetime = 52
+bindtime = -1
+supermovetime = -1
+pausemovetime = -1
+ownpal = 1
+removeongethit = 1
+scale = .5,.5
+
+[State 3200,Letter D]
+type = explod
+trigger1 = AnimElem = 5
+anim = 1082
+ID = 1082
+postype = Left
+sprpriority = -3
+supermovetime = -1
+pausemovetime = -1
+removetime = 40
+Pausemovetime = -1
+supermovetime = -1
+scale = .5,.5
+pos= 160,120
+
+[State 3200,Hyper PlaySnd]
+type = PlaySnd
+trigger1 = animelem = 5
+value = S7500,1
+
+[State 3200,BGPalFX]
+type = BGPalFX
+trigger1 = time = 0
+time = 30
+add = 256,256,256
+mul = 0,0,0
+color = 256
+ignorehitpause = 1
+
+[State 3000,Hyper Portrait]
+type = explod
+trigger1 = time = 0
+anim = 1080
+postype = back
+sprpriority = -3
+pausemovetime = -1
+supermovetime = -1
+pos = 0,0
+bindtime = -1
+removeongethit = 1
+
+[State 3000,Pause]
+type = Pause
+trigger1 = AnimElem = 1
+time = 8
+movetime = 8
+
+[State 3000,SuperPause]
+type = SuperPause
+trigger1 = AnimElem = 5
+pos = -10,-30
+anim = 100
+sound = s7500, 0
+poweradd = -3000
+
+[State 3000,NotHitBy]
+type = NotHitBy
+trigger1 = AnimElem = 1
+value = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+time = 8
+
+[State 3000,Voice]
+type = PlaySnd
+trigger1 = animelem = 5
+value = S3200,1
+channel = 0
+ignorehitpause = 1
+volume = 255
+
+[State 502, Helper]
+type = Helper
+trigger1 = animelem = 6
+ID = 3201
+pos = 0,-300
+postype = p1
+stateno = 3204
+helpertype = normal
+name = "Mom-Droid"
+keyctrl = 0
+ownpal = 1
+supermovetime = 1
+
+[State 3000,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3201
+;---------------------------------------------------------------------------
+; Dexter Start control Mom-Droid Hyper
+[Statedef 3201]
+type    = S
+movetype= I
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3201
+ctrl = 0
+sprpriority = 2
+
+[State 1400, Turn]
+type = Turn
+trigger1 = P2Dist X < -5
+
+[State 3020, 5]
+type = ChangeAnim
+triggerall = animtime = 0
+triggerall = Helper(3201), anim != [3209,3212]
+trigger1 = command != "x" && command != "y" && command != "z" && command != "a" && command != "b" && command != "c" && command != "holdfwd" && command != "holdback" && command != "start"
+value = 3201
+
+[State 1003, 1]
+type = ChangeAnim
+triggerall = Helper(3201), stateno = 3205
+triggerall = Helper(3201), anim != [3209,3212]
+trigger1 = command = "holdfwd"
+value = 3202
+
+[State 1003, 1]
+type = ChangeAnim
+triggerall = Helper(3201), stateno = 3205
+triggerall = Helper(3201), anim != [3209,3212]
+trigger1 = command = "holdback"
+value = 3203
+
+[State 1003, 1]
+type = ChangeAnim
+triggerall = Helper(3201), stateno = 3205
+triggerall = Helper(3201), anim != [3209,3212]
+trigger1 = command = "x"
+trigger2 = command = "y"
+trigger3 = command = "z"
+trigger4 = command = "a"
+trigger5 = command = "b"
+trigger6 = command = "c"
+value = 3202+random%2
+
+[State 1003, 1]
+type = ChangeAnim
+triggerall = Helper(3201), stateno = 3205
+triggerall = Helper(3201), anim != [3209,3212]
+trigger1 = command = "start"
+value = 3202+random%2
+
+[State 1900, When Mom-Droid was defeat]
+type = ChangeState
+trigger1 = Helper(3201), Var(15) <= 0
+value = 3202
+
+[State 1900, Mom-Droid: Match Over]
+type = ChangeState
+trigger1 = roundstate != 2
+value = 3203
+;---------------------------------------------------------------------------
+; Mom-Droid: When Mom-Droid was defeat
+[Statedef 3202]
+type    = S
+movetype= I
+physics = N
+juggle  = 4
+velset = 0,0
+anim = 3204
+ctrl = 0
+sprpriority = 2
+
+[State 210,PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 3
+value = s3200,3
+
+[State 210,PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 5
+value = s1000,1
+
+[State 210,PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 6
+value = s191,3
+
+[State 210,PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 6
+value = s191,1
+
+[State 3202, Control out]
+type = Helper
+trigger1 = animelem = 6
+helpertype = normal
+pos = -45,-20
+postype = p1
+facing = 1
+stateno = 708
+
+[State 3020, 7]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Mom-Droid: Match Over
+[Statedef 3203]
+type    = S
+movetype= A
+physics = S
+juggle  = 4
+velset = 0,0
+anim = 3205
+ctrl = 0
+sprpriority = 2
+
+[State 210,PlaySnd]
+type = PlaySnd
+trigger1 = AnimElem = 1
+value = s1000,1
+
+[State 3020, 7]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;---------------------------------------------------------------------------
+; Mom-Droid Show up
+[StateDef 3204]
+type    = A
+movetype= I
+physics = N
+velset = 0,0
+anim = 3207
+sprpriority = 1
+
+[State 3204, Mom-Droid's health]
+type = VarAdd
+trigger1 = Time = 0
+var(15) = 10
+
+[State 3204, velset]
+type = velset
+trigger1 = time >= 0
+x = 0
+y = 10
+
+[State 503, HitOverride]
+type = HitOverride
+trigger1 = Ishelper
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 6203
+time = -1
+
+[State 6211, ChangeState]
+type = ChangeState
+trigger1 = (Pos Y >= 0) && (Vel Y > 0)
+value = 3205
+
+;---------------------------------------------------------------------------
+; Mom-Droid
+[StateDef 3205]
+statetype = S
+movetype = I
+physics = N
+velset = 0,0
+anim = 3208
+sprpriority = 1
+
+;Main
+[State 3205, PosSet]
+type = PosSet
+trigger1 = pos y > 0
+y = 0
+
+[State 3205, Stand]
+type = ChangeAnim
+triggerall = animtime = 0
+trigger1 = command != "x" && command != "y" && command != "z" && command != "a" && command != "b" && command != "c" && command != "holdfwd" && command != "holdback"
+value = 3208
+elem = 1
+
+[State 3205, Stand Type]
+type = StateTypeSet
+trigger1 = anim = 3208
+statetype = S
+movetype = I
+physics = N
+
+[State 3205, Attack Type]
+type = StateTypeSet
+trigger1 = anim = [3210,3212]
+type    = S
+movetype= A
+physics = N
+
+[State 3205, Turn]
+type = Turn
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+trigger1 = P2Dist X < -5
+
+[State 3205, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 3205, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 3205, HitOverride]
+type = HitOverride
+trigger1 = Ishelper
+attr = SCA,NA,SA,HA,NP,SP,HP,NT,ST,HT
+slot = 0
+stateno = 3206
+time = -1
+
+;-----------
+;Attack
+;-----------
+[State 3020, ChangeAnim]
+type = ChangeAnim
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+trigger1 = parent, command = "x"
+trigger2 = parent, command = "a"
+value = 3210
+elem = 1
+
+[State 3020, ChangeAnim]
+type = ChangeAnim
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+trigger1 = parent, command = "y"
+trigger2 = parent, command = "b"
+value = 3211
+elem = 1
+
+[State 3020, ChangeAnim]
+type = ChangeAnim
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+trigger1 = parent, command = "z"
+trigger2 = parent, command = "c"
+value = 3212
+elem = 1
+
+[State 3020, ChangeAnim]
+type = ChangeAnim
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+trigger1 = parent, command = "start"
+value = 3209
+elem = 1
+
+[State 3205, Effect]
+type = PlaySnd
+triggerall = anim = [3210,3212]
+trigger1 = AnimElem = 1
+value = s0, 9
+
+[State 3205, Effect]
+type = PlaySnd
+triggerall = anim = 3209
+trigger1 = AnimElem = 1
+value = s3200,2
+channel = 0
+
+;-----------
+;left
+;-----------
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = parent, Facing != -1
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+triggerall = Facing = 1
+triggerall = Facing != -1
+trigger1 = parent,command = "holdback"
+x = -5
+
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = parent, Facing != -1
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+triggerall = Facing = 1
+triggerall = Facing != -1
+trigger1 = parent,command = "holdfwd"
+x = 5
+
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = parent, Facing != -1
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+triggerall = Facing = -1
+triggerall = Facing != 1
+trigger1 = parent,command = "holdfwd"
+x = -5
+
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = parent, Facing != -1
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+triggerall = Facing = -1
+triggerall = Facing != 1
+trigger1 = parent,command = "holdback"
+x = 5
+
+;-----------
+;right
+;-----------
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = parent, Facing != 1
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+triggerall = Facing = -1
+triggerall = Facing != 1
+trigger1 = parent,command = "holdback"
+x = -5
+
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = parent, Facing != 1
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+triggerall = Facing = -1
+triggerall = Facing != 1
+trigger1 = parent,command = "holdfwd"
+x = 5
+
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = parent, Facing != 1
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+triggerall = Facing = 1
+triggerall = Facing != -1
+trigger1 = parent,command = "holdfwd"
+x = -5
+
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+triggerall = parent, Facing != 1
+triggerall = anim != [3210,3212]
+triggerall = anim != 3209
+triggerall = Facing = 1
+triggerall = Facing != -1
+trigger1 = parent,command = "holdback"
+x = 5
+
+;-----------
+; attack moving
+;-----------
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+trigger1 = anim = 3210
+x = 2
+
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+trigger1 = anim = 3211
+x = 3
+
+[State 1002, fwd]
+type = PosAdd
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+trigger1 = anim = 3212 && animelem = 4
+x = 15
+
+[State -3, PalFXWiz]
+type = PalFX
+triggerall = parent, alive
+triggerall = parent, stateno = 3201
+trigger1 = anim = 3212 && animelem = 4
+time = 10
+add = 256,256,256
+mul = 256,256,256
+sinadd = -256,256,256,1
+invertall = 0
+color = 0
+
+[State 3000, 1]
+type = Explod
+triggerall = anim = 3211
+trigger1 = animelem = 8
+anim = 719
+sprpriority = 2
+pos= -33,-65
+scale = .9,.3
+postype =p1
+ontop=0
+bindtime = -1
+ownpal = 1
+
+[State 3000, 1]
+type = Explod
+triggerall = anim = 3212
+trigger1 = animelem = 5
+anim = 718
+sprpriority = 2
+pos= 10,0
+scale = .5,.8
+postype = p1
+ontop=0
+bindtime = -1
+ownpal = 1
+
+[State 220,HitDef]
+type = HitDef
+triggerall = anim = 3210
+trigger1 = animelem = 2
+attr = S, HA
+animtype  = Heavy
+damage    = 60,10
+hitflag = MAFD
+guardflag = MAFD
+pausetime = 7,7
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -7,-5
+hitsound   = s5,2
+guardsound = s6,2
+ground.type = Low
+ground.slidetime = 15
+ground.hittime  = 17
+ground.velocity = -6
+air.velocity = -3,-1
+down.velocity = -3,2
+down.hittime = 30
+down.bounce = 1
+envshake.time = 7
+envshake.ampl = 4
+fall.envshake. = 7
+fall.envshake.freq = 4
+fall.envshake.ampl = 4
+ground.cornerpush.veloff = -15
+air.cornerpush.veloff = -15
+down.cornerpush.veloff = -15
+guard.cornerpush.veloff = -15
+airguard.cornerpush.veloff = -15
+
+[State 220,HitDef]
+type = HitDef
+triggerall = anim = 3211
+trigger1 = animelem = 2
+attr = S, HA
+animtype  = Heavy
+damage    = 60,10
+guardflag = MA
+pausetime = 10,10
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -7,-45
+hitsound   = s5,2
+guardsound = s6,2
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 17
+ground.velocity = -15
+air.velocity = -15,-2
+envshake.time = 7
+envshake.ampl = 4
+fall.envshake. = 7
+fall.envshake.freq = 4
+fall.envshake.ampl = 4
+ground.cornerpush.veloff = -30
+air.cornerpush.veloff = -30
+down.cornerpush.veloff = -30
+guard.cornerpush.veloff = -30
+airguard.cornerpush.veloff = -30
+
+[State 220,HitDef]
+type = HitDef
+triggerall = anim = 3212
+trigger1 = animelem = 2
+attr = S, HA
+animtype = up
+damage    = 100,20
+guardflag = MAF
+pausetime = 15,15
+sparkno = s7773
+guard.sparkno = s7103
+sparkxy = -7,-80
+hitsound   = s5,2
+guardsound = s6,2
+ground.type = High
+ground.slidetime = 15
+ground.hittime  = 17
+ground.velocity = -5,-12
+air.animtype = DiagUp
+air.velocity = -5,-7
+envshake.time = 10
+envshake.ampl = 12
+fall.envshake. = 12
+fall.envshake.freq = 9
+fall.envshake.ampl = 9
+ground.cornerpush.veloff = -30
+air.cornerpush.veloff = -30
+down.cornerpush.veloff = -30
+guard.cornerpush.veloff = -30
+airguard.cornerpush.veloff = -30
+Fall = 1
+Air.Fall = 1
+yaccel = 0.39+(enemynear,const(movement.yaccel)/2)
+palfx.time = 10
+palfx.add = 100,100,180
+palfx.mul = 256,256,256
+palfx.sinadd = -80,-80,-80,10
+palfx.color = 0;
+
+[State 1900, Text]
+type = Helper
+trigger1 = movehit = 1 && numtarget
+trigger1 = target, time <= 0 && p2movetype = H
+name = "Text"
+stateno = 8003
+pos = (enemynear,const(size.mid.pos.x))+30,(enemynear,const(size.mid.pos.y))
+postype = p1
+facing = 1
+keyctrl = 0
+ownpal = 1
+supermovetime = 0
+pausemovetime = 0
+ignorehitpause = 1
+
+[State 1900, State]
+type = ChangeState
+triggerall = 1
+trigger1 = Var(15) <= 0
+value = 3209
+
+;---------------------------------------------------------------------------
+; Mom-Droid hitdef
+[StateDef 3206]
+type = S
+movetype = A
+physics = S
+anim = 3213
+velset = 0,0
+sprpriority = -1
+
+[State 191,Voice]
+type = PlaySnd
+trigger1 = time = 0
+value = s3200,4
+
+[State 1900, VarAdd]
+type = VarAdd
+trigger1 = Time = 0
+var(15) = -1
+
+[State 3205, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 3205, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 1900, PosFreeze]
+type = PosFreeze
+trigger1 = !HitShakeOver
+x = 1
+y = 1
+
+[State 1900, HitVelSet]
+type = HitVelSet
+trigger1 = HitShakeOver
+x = 1
+y = 1
+
+[State 1900, State]
+type = ChangeState
+trigger1 = HitShakeOver
+trigger1 = StateType != A
+value = 3207
+
+[State 1900, State]
+type = ChangeState
+trigger1 = HitShakeOver
+trigger1 = StateType = A
+value = 3208
+
+[State 1900, State]
+type = ChangeState
+triggerall = 1
+trigger1 = Var(15) <= 0
+value = 3209
+;---------------------------------------------------------------------------
+; Mom-Droid Hit Move Ground
+[Statedef 3207]
+type = S
+movetype = H
+physics = S
+anim = 3213
+
+[State 3205, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 3205, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 1900, 1]
+type = ChangeState
+trigger1 = Pos Y != 0
+trigger2 = Vel Y != 0
+value = 3208
+
+[State 1900, 2]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 1900, State]
+type = ChangeState
+triggerall = Time > 0
+trigger1 = Vel X = 0
+value = 3210
+;---------------------------------------------------------------------------
+; Mom-Droid Hit Move Air
+[Statedef 3208]
+type = A
+movetype = H
+physics = N
+anim = 3213
+
+[State 3205, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 3205, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 1900, 1]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 1900, 2] ;Gravity
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 1900, State]
+type = ChangeState
+triggerall = Time > 0
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 3210
+;---------------------------------------------------------------------------
+; Mom-Droid Knock down
+[Statedef 3209]
+type    = A
+movetype= I
+physics = N
+poweradd = 0
+sprpriority = -1
+anim = 3214
+ctrl = 0
+
+[State 504, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = s1000,23
+
+[State 3205, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 3205, PlayerPush]
+type = PlayerPush
+trigger1 = 1
+value = 1
+
+[State 1900, 1]
+type = HitVelSet
+trigger1 = Time = 0
+x = 1
+y = 1
+
+[State 1900, 2] ;Gravity
+type = VelAdd
+trigger1 = 1
+y = GetHitVar(yaccel)
+
+[State 1900, State]
+type = ChangeState
+triggerall = Time > 0
+trigger1 = Vel Y > 0
+trigger1 = Pos Y >= 0
+value = 3211
+;---------------------------------------------------------------------------
+;Land
+[Statedef 3210]
+type    = S
+movetype= I
+physics = S
+velset = 0,0
+anim = 3213
+sprpriority = 1
+velset = 0,0
+
+[State 1800, 1]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+[State 1800, 2]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 3205, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 1800,End]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 3205
+;---------------------------------------------------------------------------
+; Mom-Droid Knock down (gone)
+[Statedef 3211]
+type    = A
+movetype= I
+physics = N
+poweradd = 0
+sprpriority = -1
+velset = 0,0
+ctrl = 0
+
+[State 521, AngleSet]
+type = AngleSet
+trigger1 = Time = 0
+value = 1
+
+[State 521, AngleDraw]
+type = AngleDraw
+trigger1 = 1
+
+[State 3002,EnvShake]
+type = EnvShake
+trigger1 = time = 10
+time = 5
+freq = 20
+ampl = -5
+phase = 10
+
+[State 521, AngleMul]
+type = AngleAdd
+trigger1 = time = [0,9]
+value = 8
+
+[State 504, PlaySnd]
+type = PlaySnd
+trigger1 = time = 0
+value = s6,2
+
+[State 504, PlaySnd]
+type = PlaySnd
+trigger1 = time = 10
+value = s3000,10
+
+[State 1002,VelSet]
+type = VelSet
+trigger1 = Time = 0
+x = 0
+
+[State 1800, 1]
+type = VelSet
+trigger1 = Time = 0
+y = 0
+
+[State 1800, 2]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 207: Fade Out Eventually]
+type = Trans
+trigger1 = Time > 80
+trans = addalpha
+alpha = 256-((Time-70)*(256/60)), (Time-70)*(256/60)
+
+[State 3205, ScreenBound]
+type = ScreenBound
+trigger1 = 1
+value = 1
+movecamera = 0,0
+
+[State 1002, Destroy]
+type = DestroySelf
+trigger1 = Time = 300
+

@@ -1,0 +1,71 @@
+;===========================================================================
+; Dexter's constants and state file.
+; There are comments scattered through this file, so you may like to
+; take a look if would like to learn more about the cns.
+; Enjoy it~            ~FelixMario2012
+;===========================================================================
+[Data]
+life = 1000
+power = 5000
+attack = 100
+defence = 100
+fall.defence_up = 50
+liedown.time = 30
+airjuggle = 15
+sparkno = 2
+guard.sparkno = 40
+KO.echo = 0
+volume = 0
+IntPersistIndex = 60
+FloatPersistIndex = 40
+
+[Size]
+xscale = 1
+yscale = 1
+ground.back = 15
+ground.front = 16
+air.back = 12
+air.front = 12
+height = 30
+attack.dist = 160
+proj.attack.dist = 90
+proj.doscale = 0
+head.pos = 0, -35
+mid.pos = 0, -25
+shadowoffset = 0
+draw.offset = 0,0
+
+[Velocity]
+walk.fwd  = 2.4
+walk.back = -2.4
+run.fwd  = 4.6, 0
+run.back = -4.5,-3.8
+jump.neu = 0,-8.4
+jump.back = -2.55
+jump.fwd = 2.5
+runjump.back = -2.55,-8.1
+runjump.fwd = 4,-8.1
+airjump.neu = 0,-8.1
+airjump.back = -2.55
+airjump.fwd = 2.5
+
+[Movement]
+airjump.num = 1
+airjump.height = 20
+yaccel = .44
+stand.friction = .85
+crouch.friction = .82
+
+[Quotes];it was taken from NewEraOutlaw's Cartoon Network Crossover Chaos.?
+victory1 = "Success! My victory has been completed!"
+victory2 = "My test data shows that excessive force in any capacity...was not required."
+victory3 = "I have a hypothesis. Maybe if I tied my hands down, you'd stand a slightly better chance of winning?"
+victory4 = "Omelette du...fromage? Ow. Still stuck in my head after all this time."
+victory5 = "At least Dee Dee isn't here to blow my inventions to kingdom come....this time!"
+victory6 = "Hey, better you than me. Usually when something blows up that badly, I wind up naked with my hair on fire!"
+victory7 = "Don't take it personally. I'm on a mission to save this universe, and you were just in the way of progress."
+victory8 = "I AM...UNSTOPPABLE!!!!!!!!!!!"
+victory9 = "Sorry I had to do that. You were a very worthwhile adversary!";(against Blossom)
+victory10 = "Though you and my sister share the same intellectual capacity and inane fascination with stuffed animals and joyness, you and her are not the same. Well, go on now. Shoo";(Against Bubbles and Kuki Sanban)
+victory11 = "Sorry, the last bunch of talking ponies I might were serial killers..";(against My Little Pony characters)
+victory12 = "Even though you are a complete and utter idiot, I know what it's like to have an annoying sister...";(against Beavis and Butt-head)
